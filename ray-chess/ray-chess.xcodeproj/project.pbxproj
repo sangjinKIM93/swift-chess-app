@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48AABC6A28DE90B70085F577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC6928DE90B70085F577 /* AppDelegate.swift */; };
+		48AABC6C28DE90B70085F577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC6B28DE90B70085F577 /* SceneDelegate.swift */; };
+		48AABC6E28DE90B70085F577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC6D28DE90B70085F577 /* ViewController.swift */; };
+		48AABC7128DE90B70085F577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AABC6F28DE90B70085F577 /* Main.storyboard */; };
+		48AABC7328DE90BB0085F577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48AABC7228DE90BB0085F577 /* Assets.xcassets */; };
+		48AABC7628DE90BB0085F577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AABC7428DE90BB0085F577 /* LaunchScreen.storyboard */; };
+		48AABC8128DE90BB0085F577 /* ray_chessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC8028DE90BB0085F577 /* ray_chessTests.swift */; };
+		48AABC8B28DE90BB0085F577 /* ray_chessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC8A28DE90BB0085F577 /* ray_chessUITests.swift */; };
+		48AABC8D28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC8C28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48AABC7D28DE90BB0085F577 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AABC5E28DE90B70085F577 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AABC6528DE90B70085F577;
+			remoteInfo = "ray-chess";
+		};
+		48AABC8728DE90BB0085F577 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48AABC5E28DE90B70085F577 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48AABC6528DE90B70085F577;
+			remoteInfo = "ray-chess";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		48AABC6628DE90B70085F577 /* ray-chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ray-chess.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48AABC6928DE90B70085F577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		48AABC6B28DE90B70085F577 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		48AABC6D28DE90B70085F577 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		48AABC7028DE90B70085F577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48AABC7228DE90BB0085F577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48AABC7528DE90BB0085F577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		48AABC7728DE90BB0085F577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48AABC7C28DE90BB0085F577 /* ray-chessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ray-chessTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48AABC8028DE90BB0085F577 /* ray_chessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ray_chessTests.swift; sourceTree = "<group>"; };
+		48AABC8628DE90BB0085F577 /* ray-chessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ray-chessUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48AABC8A28DE90BB0085F577 /* ray_chessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ray_chessUITests.swift; sourceTree = "<group>"; };
+		48AABC8C28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ray_chessUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48AABC6328DE90B70085F577 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AABC7928DE90BB0085F577 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AABC8328DE90BB0085F577 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48AABC5D28DE90B70085F577 = {
+			isa = PBXGroup;
+			children = (
+				48AABC6828DE90B70085F577 /* ray-chess */,
+				48AABC7F28DE90BB0085F577 /* ray-chessTests */,
+				48AABC8928DE90BB0085F577 /* ray-chessUITests */,
+				48AABC6728DE90B70085F577 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48AABC6728DE90B70085F577 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48AABC6628DE90B70085F577 /* ray-chess.app */,
+				48AABC7C28DE90BB0085F577 /* ray-chessTests.xctest */,
+				48AABC8628DE90BB0085F577 /* ray-chessUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48AABC6828DE90B70085F577 /* ray-chess */ = {
+			isa = PBXGroup;
+			children = (
+				48AABC6928DE90B70085F577 /* AppDelegate.swift */,
+				48AABC6B28DE90B70085F577 /* SceneDelegate.swift */,
+				48AABC6D28DE90B70085F577 /* ViewController.swift */,
+				48AABC6F28DE90B70085F577 /* Main.storyboard */,
+				48AABC7228DE90BB0085F577 /* Assets.xcassets */,
+				48AABC7428DE90BB0085F577 /* LaunchScreen.storyboard */,
+				48AABC7728DE90BB0085F577 /* Info.plist */,
+			);
+			path = "ray-chess";
+			sourceTree = "<group>";
+		};
+		48AABC7F28DE90BB0085F577 /* ray-chessTests */ = {
+			isa = PBXGroup;
+			children = (
+				48AABC8028DE90BB0085F577 /* ray_chessTests.swift */,
+			);
+			path = "ray-chessTests";
+			sourceTree = "<group>";
+		};
+		48AABC8928DE90BB0085F577 /* ray-chessUITests */ = {
+			isa = PBXGroup;
+			children = (
+				48AABC8A28DE90BB0085F577 /* ray_chessUITests.swift */,
+				48AABC8C28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift */,
+			);
+			path = "ray-chessUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48AABC6528DE90B70085F577 /* ray-chess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48AABC9028DE90BB0085F577 /* Build configuration list for PBXNativeTarget "ray-chess" */;
+			buildPhases = (
+				48AABC6228DE90B70085F577 /* Sources */,
+				48AABC6328DE90B70085F577 /* Frameworks */,
+				48AABC6428DE90B70085F577 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ray-chess";
+			productName = "ray-chess";
+			productReference = 48AABC6628DE90B70085F577 /* ray-chess.app */;
+			productType = "com.apple.product-type.application";
+		};
+		48AABC7B28DE90BB0085F577 /* ray-chessTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48AABC9328DE90BB0085F577 /* Build configuration list for PBXNativeTarget "ray-chessTests" */;
+			buildPhases = (
+				48AABC7828DE90BB0085F577 /* Sources */,
+				48AABC7928DE90BB0085F577 /* Frameworks */,
+				48AABC7A28DE90BB0085F577 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48AABC7E28DE90BB0085F577 /* PBXTargetDependency */,
+			);
+			name = "ray-chessTests";
+			productName = "ray-chessTests";
+			productReference = 48AABC7C28DE90BB0085F577 /* ray-chessTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		48AABC8528DE90BB0085F577 /* ray-chessUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48AABC9628DE90BB0085F577 /* Build configuration list for PBXNativeTarget "ray-chessUITests" */;
+			buildPhases = (
+				48AABC8228DE90BB0085F577 /* Sources */,
+				48AABC8328DE90BB0085F577 /* Frameworks */,
+				48AABC8428DE90BB0085F577 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48AABC8828DE90BB0085F577 /* PBXTargetDependency */,
+			);
+			name = "ray-chessUITests";
+			productName = "ray-chessUITests";
+			productReference = 48AABC8628DE90BB0085F577 /* ray-chessUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48AABC5E28DE90B70085F577 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					48AABC6528DE90B70085F577 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					48AABC7B28DE90BB0085F577 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 48AABC6528DE90B70085F577;
+					};
+					48AABC8528DE90BB0085F577 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 48AABC6528DE90B70085F577;
+					};
+				};
+			};
+			buildConfigurationList = 48AABC6128DE90B70085F577 /* Build configuration list for PBXProject "ray-chess" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48AABC5D28DE90B70085F577;
+			productRefGroup = 48AABC6728DE90B70085F577 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48AABC6528DE90B70085F577 /* ray-chess */,
+				48AABC7B28DE90BB0085F577 /* ray-chessTests */,
+				48AABC8528DE90BB0085F577 /* ray-chessUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48AABC6428DE90B70085F577 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48AABC7628DE90BB0085F577 /* LaunchScreen.storyboard in Resources */,
+				48AABC7328DE90BB0085F577 /* Assets.xcassets in Resources */,
+				48AABC7128DE90B70085F577 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AABC7A28DE90BB0085F577 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AABC8428DE90BB0085F577 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48AABC6228DE90B70085F577 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48AABC6E28DE90B70085F577 /* ViewController.swift in Sources */,
+				48AABC6A28DE90B70085F577 /* AppDelegate.swift in Sources */,
+				48AABC6C28DE90B70085F577 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AABC7828DE90BB0085F577 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48AABC8128DE90BB0085F577 /* ray_chessTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AABC8228DE90BB0085F577 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48AABC8D28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift in Sources */,
+				48AABC8B28DE90BB0085F577 /* ray_chessUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48AABC7E28DE90BB0085F577 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AABC6528DE90B70085F577 /* ray-chess */;
+			targetProxy = 48AABC7D28DE90BB0085F577 /* PBXContainerItemProxy */;
+		};
+		48AABC8828DE90BB0085F577 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48AABC6528DE90B70085F577 /* ray-chess */;
+			targetProxy = 48AABC8728DE90BB0085F577 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		48AABC6F28DE90B70085F577 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48AABC7028DE90B70085F577 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		48AABC7428DE90BB0085F577 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48AABC7528DE90BB0085F577 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48AABC8E28DE90BB0085F577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		48AABC8F28DE90BB0085F577 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48AABC9128DE90BB0085F577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ray-chess/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ray-chess";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48AABC9228DE90BB0085F577 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ray-chess/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ray-chess";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		48AABC9428DE90BB0085F577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ray-chessTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ray-chess.app/ray-chess";
+			};
+			name = Debug;
+		};
+		48AABC9528DE90BB0085F577 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ray-chessTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ray-chess.app/ray-chess";
+			};
+			name = Release;
+		};
+		48AABC9728DE90BB0085F577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ray-chessUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ray-chess";
+			};
+			name = Debug;
+		};
+		48AABC9828DE90BB0085F577 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ray-chessUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ray-chess";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48AABC6128DE90B70085F577 /* Build configuration list for PBXProject "ray-chess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48AABC8E28DE90BB0085F577 /* Debug */,
+				48AABC8F28DE90BB0085F577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48AABC9028DE90BB0085F577 /* Build configuration list for PBXNativeTarget "ray-chess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48AABC9128DE90BB0085F577 /* Debug */,
+				48AABC9228DE90BB0085F577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48AABC9328DE90BB0085F577 /* Build configuration list for PBXNativeTarget "ray-chessTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48AABC9428DE90BB0085F577 /* Debug */,
+				48AABC9528DE90BB0085F577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48AABC9628DE90BB0085F577 /* Build configuration list for PBXNativeTarget "ray-chessUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48AABC9728DE90BB0085F577 /* Debug */,
+				48AABC9828DE90BB0085F577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48AABC5E28DE90B70085F577 /* Project object */;
+}
