@@ -25,17 +25,16 @@ class BoardMovePawnTest: XCTestCase {
     }
     
     func checkIsMyPiece() {
-        let board = Board()
-        board.setPawnDummyData()
+        let chessGame = ChessGame()
         
-        let firstResult = board.canMovePawn(
+        let firstResult = chessGame.board.canMovePawn(
             from: PiecePosition(rank: 2, file: 2),
             to: PiecePosition(rank: 3, file: 2),
             currentColor: .black
         )
         XCTAssertEqual(firstResult, true)
         
-        let secondResult = board.canMovePawn(
+        let secondResult = chessGame.board.canMovePawn(
             from: PiecePosition(rank: 2, file: 2),
             to: PiecePosition(rank: 3, file: 2),
             currentColor: .white
@@ -44,10 +43,9 @@ class BoardMovePawnTest: XCTestCase {
     }
     
     func checkExistSameColorPiece() {
-        let board = Board()
-        board.setPawnDummyData()
+        let chessGame = ChessGame()
         
-        let firstResult = board.canMovePawn(
+        let firstResult = chessGame.board.canMovePawn(
             from: PiecePosition(rank: 2, file: 2),
             to: PiecePosition(rank: 3, file: 2),
             currentColor: .white
@@ -56,10 +54,9 @@ class BoardMovePawnTest: XCTestCase {
     }
     
     func isOneStepFoward() {
-        let board = Board()
-        board.setPawnDummyData()
+        let chessGame = ChessGame()
         
-        let firstResult = board.canMovePawn(
+        let firstResult = chessGame.board.canMovePawn(
             from: PiecePosition(rank: 2, file: 2),
             to: PiecePosition(rank: 3, file: 2),
             currentColor: .black

@@ -209,17 +209,3 @@ extension Board {
         return false
     }
 }
-
-// MARK: = Dummy Data
-extension Board {
-    func setPawnDummyData() {
-        for file in 1...8 {
-            let position = PiecePosition(rank: PawnConst.blackStartRank, file: file)
-            setPieceOnBoard(position: position, name: PawnConst.blackName)
-        }
-        for file in 1...8 {
-            let position = PiecePosition(rank: PawnConst.whiteStartRank, file: file)
-            setPieceOnBoard(position: position, name: PawnConst.whiteName)
-        }
-    }
-}
