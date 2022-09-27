@@ -28,7 +28,18 @@ class BoardSetPawnTest: XCTestCase {
     
     func checkGetPiece() {
         let board = Board()
+        
+        // 존재성 테스트
+        XCTAssertEqual(board.matrix.count, 8)
+        board.matrix.forEach { rank in
+            XCTAssertEqual(rank.count, 8)
+        }
+        
+        // 개체 수 테스트
         XCTAssertEqual(board.getPieceOnBoard(rank: 0, file: 0), nil)
+        XCTAssertEqual(board.getPieceOnBoard(rank: 1, file: 1) != nil, true)
+        XCTAssertEqual(board.getPieceOnBoard(rank: 9, file: 9), nil)
+        XCTAssertEqual(board.getPieceOnBoard(rank: 8, file: 8) != nil, true)
         XCTAssertEqual(board.getPieceOnBoard(rank: 2, file: 2) != nil, true)
     }
     
