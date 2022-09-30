@@ -8,41 +8,40 @@
 import Foundation
 
 class Piece {
-    var position: PiecePosition
-    var color: PieceColor
+    var position: Piece.Position
+    var color: Piece.Color
     var name: String
     
-    init(color: PieceColor, position: PiecePosition, name: String) {
+    init(color: Piece.Color, position: Piece.Position, name: String) {
         self.color = color
         self.position = position
         self.name = name
     }
     
-    func getColor() -> PieceColor {
+    func getColor() -> Piece.Color {
         return self.color
     }
     
-    func getPosition() -> PiecePosition {
+    func getPosition() -> Piece.Position {
         return self.position
     }
-}
-
-
-struct PiecePosition {
-    var rank: Int
-    var file: Int
-}
-
-enum PieceColor {
-    case white
-    case black
     
-    func getSymbolString() -> String {
-        switch self {
-        case .white:
-            return "9"
-        case .black:
-            return "F"
+    struct Position {
+        var rank: Int
+        var file: Int
+    }
+    
+    enum Color {
+        case white
+        case black
+        
+        func getSymbolString() -> String {
+            switch self {
+            case .white:
+                return "9"
+            case .black:
+                return "F"
+            }
         }
     }
 }

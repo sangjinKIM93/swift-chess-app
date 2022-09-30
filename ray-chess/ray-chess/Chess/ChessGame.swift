@@ -20,7 +20,7 @@ class ChessGame {
     
     func initBlackPawn() {
         for file in 1...PawnConst.maxCount {
-            let pawn = Pawn(color: .black, position: PiecePosition(rank: PawnConst.blackStartRank, file: file))
+            let pawn = Pawn(color: .black, position: Piece.Position(rank: PawnConst.blackStartRank, file: file))
             
             if board.canSetPawn(pawn: pawn) {
                 board.setPieceOnBoard(position: pawn.position, name: pawn.name)
@@ -30,7 +30,7 @@ class ChessGame {
     
     func initWhitePawn() {
         for file in 1...PawnConst.maxCount {
-            let pawn = Pawn(color: .white, position: PiecePosition(rank: PawnConst.whiteStartRank, file: file))
+            let pawn = Pawn(color: .white, position: Piece.Position(rank: PawnConst.whiteStartRank, file: file))
             
             if board.canSetPawn(pawn: pawn) {
                 board.setPieceOnBoard(position: pawn.position, name: pawn.name)
