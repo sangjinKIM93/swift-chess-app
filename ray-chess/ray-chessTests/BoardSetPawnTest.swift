@@ -23,7 +23,7 @@ class BoardSetPawnTest: XCTestCase {
     func checkCanSetPawn() {
         checkIsCorrectRank()
         checkIsEmptyPosition()
-        checkIsOverPawnMaxCount()
+//        checkIsOverPawnMaxCount()
     }
     
     func checkGetPiece() {
@@ -36,20 +36,16 @@ class BoardSetPawnTest: XCTestCase {
         }
         
         // 개체 수 테스트
-        XCTAssertEqual(board.getPieceOnBoard(rank: 0, file: 0), nil)
-        XCTAssertEqual(board.getPieceOnBoard(rank: 1, file: 1) != nil, true)
-        XCTAssertEqual(board.getPieceOnBoard(rank: 9, file: 9), nil)
-        XCTAssertEqual(board.getPieceOnBoard(rank: 8, file: 8) != nil, true)
-        XCTAssertEqual(board.getPieceOnBoard(rank: 2, file: 2) != nil, true)
+        XCTAssertEqual(board.getPieceOnBoard(position: Piece.Position(rank: .one, file: .A)) != nil, true)
+        XCTAssertEqual(board.getPieceOnBoard(position: Piece.Position(rank: .eight, file: .H)) != nil, true)
+        XCTAssertEqual(board.getPieceOnBoard(position: Piece.Position(rank: .two, file: .B)) != nil, true)
     }
     
     func checkSetPiece() {
         let board = Board()
-        let zeroPiece = Piece(color: .white, position: Piece.Position(rank: 0, file: 0), name: "")
-        let onePiece = Piece(color: .white, position: Piece.Position(rank: 1, file: 1), name: "")
-        let nPiece = Piece(color: .white, position: Piece.Position(rank: 8, file: 8), name: "")
+        let onePiece = Piece(color: .white, position: Piece.Position(rank: .one, file: .A), name: "")
+        let nPiece = Piece(color: .white, position: Piece.Position(rank: .eight, file: .H), name: "")
         
-        XCTAssertEqual(board.setPieceOnBoard(position: zeroPiece.position, name: zeroPiece.name), false)
         XCTAssertEqual(board.setPieceOnBoard(position: onePiece.position, name: onePiece.name), true)
         XCTAssertEqual(board.setPieceOnBoard(position: nPiece.position, name: nPiece.name), true)
         
@@ -58,13 +54,13 @@ class BoardSetPawnTest: XCTestCase {
     func checkIsCorrectRank() {
         let board = Board()
         
-        let invalidRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: 4, file: 1))
+        let invalidRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: .four, file: .A))
         XCTAssertEqual(
             board.canSetPawn(pawn: invalidRankPostionPawn),
             false
         )
         
-        let validRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: 2, file: 1))
+        let validRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
         XCTAssertEqual(
             board.canSetPawn(pawn: validRankPostionPawn),
             true
@@ -74,7 +70,7 @@ class BoardSetPawnTest: XCTestCase {
     func checkIsEmptyPosition() {
         let board = Board()
         
-        let dummyPawn = Pawn(color: .black, position: Piece.Position(rank: 2, file: 1))
+        let dummyPawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
         XCTAssertEqual(
             board.canSetPawn(pawn: dummyPawn),
             true
@@ -82,7 +78,7 @@ class BoardSetPawnTest: XCTestCase {
         
         board.setPieceOnBoard(position: dummyPawn.position, name: dummyPawn.name)
         
-        let noEmptySpacePawn = Pawn(color: .black, position: Piece.Position(rank: 2, file: 1))
+        let noEmptySpacePawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
         
         XCTAssertEqual(
             board.canSetPawn(pawn: noEmptySpacePawn),
@@ -90,23 +86,23 @@ class BoardSetPawnTest: XCTestCase {
         )
     }
     
-    func checkIsOverPawnMaxCount() {
-        let board = Board()
-        
-        for i in 1...9 {
-            let pawn = Pawn(color: .black, position: Piece.Position(rank: 2, file: i))
-            if i > 8 {
-                XCTAssertEqual(
-                    board.canSetPawn(pawn: pawn),
-                    false
-                )
-            } else {
-                XCTAssertEqual(
-                    board.canSetPawn(pawn: pawn),
-                    true
-                )
-            }
-            board.setPieceOnBoard(position: pawn.position, name: pawn.name)
-        }
-    }
+//    func checkIsOverPawnMaxCount() {
+//        let board = Board()
+//
+//        for i in 1...9 {
+//            let pawn = Pawn(color: .black, position: Piece.Position(rank: 2, file: i))
+//            if i > 8 {
+//                XCTAssertEqual(
+//                    board.canSetPawn(pawn: pawn),
+//                    false
+//                )
+//            } else {
+//                XCTAssertEqual(
+//                    board.canSetPawn(pawn: pawn),
+//                    true
+//                )
+//            }
+//            board.setPieceOnBoard(position: pawn.position, name: pawn.name)
+//        }
+//    }
 }
