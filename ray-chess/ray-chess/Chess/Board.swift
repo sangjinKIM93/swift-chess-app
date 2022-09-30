@@ -65,7 +65,7 @@ extension Board {
         return false
     }
     
-    func IsEmptyPosition(position: PiecePosition) -> Bool {
+    func IsEmptyPosition(position: Piece.Position) -> Bool {
         // piece를 파라미터로 받는게 좋을까?
         let piece = getPieceOnBoard(rank: position.rank, file: position.file)
         
@@ -76,7 +76,7 @@ extension Board {
         }
     }
     
-    func IsOverPawnMaxCount(color: PieceColor) -> Bool {
+    func IsOverPawnMaxCount(color: Piece.Color) -> Bool {
         switch color {
         case .white:
             if theNumberOfWhitePawn() > PawnConst.maxCount {
@@ -117,7 +117,7 @@ extension Board {
 
 // MARK: - Pawn move
 extension Board {
-    func canMovePawn(from: PiecePosition, to: PiecePosition, currentColor: PieceColor) -> Bool {
+    func canMovePawn(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Bool {
         guard !indexOutOfRange(rank: to.rank, file: to.file) else {
             return false
         }
@@ -134,12 +134,12 @@ extension Board {
         return true
     }
     
-    func movePawn(from: PiecePosition, to: PiecePosition, pieceName: String) {
+    func movePawn(from: Piece.Position, to: Piece.Position, pieceName: String) {
         setPieceOnBoard(position: from, name: ".")
         setPieceOnBoard(position: to, name: pieceName)
     }
     
-    func isMyPiece(from: PiecePosition, currentColor: PieceColor) -> Bool {
+    func isMyPiece(from: Piece.Position, currentColor: Piece.Color) -> Bool {
         guard let fromPiece = getPieceOnBoard(rank: from.rank, file: from.file) else {
             return false
         }
@@ -151,7 +151,7 @@ extension Board {
         }
     }
     
-    func existSameColorPiece(from: PiecePosition, to: PiecePosition) -> Bool {
+    func existSameColorPiece(from: Piece.Position, to: Piece.Position) -> Bool {
         let fromPiece = getPieceOnBoard(rank: from.rank, file: from.file)
         let toPiece = getPieceOnBoard(rank: to.rank, file: to.file)
         
@@ -162,7 +162,7 @@ extension Board {
         }
     }
     
-    func isOneStepFoward(from: PiecePosition, to: PiecePosition, currentColor: PieceColor) -> Bool {
+    func isOneStepFoward(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Bool {
         if from.file == to.file {
             switch currentColor {
             case .white:
@@ -191,7 +191,7 @@ extension Board {
     }
     
     @discardableResult
-    func setPieceOnBoard(position: PiecePosition, name: String) -> Bool {
+    func setPieceOnBoard(position: Piece.Position, name: String) -> Bool {
         let rank = position.rank
         let file = position.file
         guard rank >= 1 && rank <= 8 && file >= 1 && file <= 8 else {

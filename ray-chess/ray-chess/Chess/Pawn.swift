@@ -9,7 +9,7 @@ import Foundation
 
 class Pawn: Piece {
     
-    init(color: PieceColor, position: PiecePosition) {
+    init(color: Piece.Color, position: Piece.Position) {
         switch color {
         case .white:
             super.init(color: color, position: position, name: PawnConst.whiteName)

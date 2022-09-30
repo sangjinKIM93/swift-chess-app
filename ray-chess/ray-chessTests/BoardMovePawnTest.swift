@@ -28,15 +28,15 @@ class BoardMovePawnTest: XCTestCase {
         let chessGame = ChessGame()
         
         let firstResult = chessGame.board.canMovePawn(
-            from: PiecePosition(rank: 2, file: 2),
-            to: PiecePosition(rank: 3, file: 2),
+            from: Piece.Position(rank: 2, file: 2),
+            to: Piece.Position(rank: 3, file: 2),
             currentColor: .black
         )
         XCTAssertEqual(firstResult, true)
         
         let secondResult = chessGame.board.canMovePawn(
-            from: PiecePosition(rank: 2, file: 2),
-            to: PiecePosition(rank: 3, file: 2),
+            from: Piece.Position(rank: 2, file: 2),
+            to: Piece.Position(rank: 3, file: 2),
             currentColor: .white
         )
         XCTAssertEqual(secondResult, false)
@@ -46,21 +46,21 @@ class BoardMovePawnTest: XCTestCase {
         let chessGame = ChessGame()
         
         let firstResult = chessGame.board.canMovePawn(
-            from: PiecePosition(rank: 2, file: 2),
-            to: PiecePosition(rank: 3, file: 2),
+            from: Piece.Position(rank: 2, file: 2),
+            to: Piece.Position(rank: 3, file: 2),
             currentColor: .black
         )
         XCTAssertEqual(firstResult, true)
         
         chessGame.board.movePawn(
-            from: PiecePosition(rank: 3, file: 2),
-            to: PiecePosition(rank: 6, file: 2),
+            from: Piece.Position(rank: 3, file: 2),
+            to: Piece.Position(rank: 6, file: 2),
             pieceName: PawnConst.blackName
         )
         
         let secondResult = chessGame.board.canMovePawn(
-            from: PiecePosition(rank: 6, file: 2),
-            to: PiecePosition(rank: 7, file: 2),
+            from: Piece.Position(rank: 6, file: 2),
+            to: Piece.Position(rank: 7, file: 2),
             currentColor: .black
         )
         XCTAssertEqual(secondResult, true)
@@ -70,15 +70,15 @@ class BoardMovePawnTest: XCTestCase {
         let chessGame = ChessGame()
         
         let firstResult = chessGame.board.canMovePawn(
-            from: PiecePosition(rank: 2, file: 2),
-            to: PiecePosition(rank: 3, file: 2),
+            from: Piece.Position(rank: 2, file: 2),
+            to: Piece.Position(rank: 3, file: 2),
             currentColor: .black
         )
         XCTAssertEqual(firstResult, true)
         
         let secondResult = chessGame.board.canMovePawn(
-            from: PiecePosition(rank: 2, file: 2),
-            to: PiecePosition(rank: 1, file: 2),
+            from: Piece.Position(rank: 2, file: 2),
+            to: Piece.Position(rank: 1, file: 2),
             currentColor: .black
         )
         XCTAssertEqual(secondResult, false)
