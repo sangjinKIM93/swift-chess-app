@@ -32,9 +32,6 @@ class Board {
 // MARK: - Pawn initialize
 extension Board {
     func canSetPawn(pawn: Pawn) -> Bool {
-        guard !indexOutOfRange(rank: pawn.position.rank, file: pawn.position.file) else {
-            return false
-        }
         guard isCorrectRankPosition(piece: pawn) else {
             return false
         }
@@ -53,11 +50,11 @@ extension Board {
         
         switch piece.getColor() {
         case .white:
-            if rank == 7 || rank == 8 {
+            if rank == .seven || rank == .eight {
                 return true
             }
         case .black:
-            if rank == 1 || rank == 2 {
+            if rank == .one || rank == .two {
                 return true
             }
         }
@@ -67,7 +64,7 @@ extension Board {
     
     func IsEmptyPosition(position: Piece.Position) -> Bool {
         // piece를 파라미터로 받는게 좋을까?
-        let piece = getPieceOnBoard(rank: position.rank, file: position.file)
+        let piece = getPieceOnBoard(position: position)
         
         if piece == "." {
             return true
@@ -118,9 +115,6 @@ extension Board {
 // MARK: - Pawn move
 extension Board {
     func canMovePawn(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Bool {
-        guard !indexOutOfRange(rank: to.rank, file: to.file) else {
-            return false
-        }
         guard isMyPiece(from: from, currentColor: currentColor) else {
             return false
         }
@@ -140,7 +134,7 @@ extension Board {
     }
     
     func isMyPiece(from: Piece.Position, currentColor: Piece.Color) -> Bool {
-        guard let fromPiece = getPieceOnBoard(rank: from.rank, file: from.file) else {
+        guard let fromPiece = getPieceOnBoard(position: from) else {
             return false
         }
         
@@ -152,8 +146,8 @@ extension Board {
     }
     
     func existSameColorPiece(from: Piece.Position, to: Piece.Position) -> Bool {
-        let fromPiece = getPieceOnBoard(rank: from.rank, file: from.file)
-        let toPiece = getPieceOnBoard(rank: to.rank, file: to.file)
+        let fromPiece = getPieceOnBoard(position: from)
+        let toPiece = getPieceOnBoard(position: to)
         
         if toPiece?.suffix(1) == fromPiece?.suffix(1) {
             return true
@@ -166,11 +160,11 @@ extension Board {
         if from.file == to.file {
             switch currentColor {
             case .white:
-                if (to.rank - from.rank) == -1 {
+                if (to.rank.rawValue - from.rank.rawValue) == -1 {
                     return true
                 }
             case .black:
-                if (to.rank - from.rank) == 1 {
+                if (to.rank.rawValue - from.rank.rawValue) == 1 {
                     return true
                 }
             }
@@ -183,29 +177,13 @@ extension Board {
 
 // MARK: - Matrix Common
 extension Board {
-    func getPieceOnBoard(rank: Int, file: Int) -> String? {
-        guard rank >= 1 && rank <= 8 && file >= 1 && file <= 8 else {
-            return nil
-        }
-        return matrix[rank - 1][file - 1]
+    func getPieceOnBoard(position: Piece.Position) -> String? {
+        return matrix[position.rank.rawValue][position.file.rawValue]
     }
     
     @discardableResult
     func setPieceOnBoard(position: Piece.Position, name: String) -> Bool {
-        let rank = position.rank
-        let file = position.file
-        guard rank >= 1 && rank <= 8 && file >= 1 && file <= 8 else {
-            return false
-        }
-        
-        matrix[rank - 1][file - 1] = name
+        matrix[position.rank.rawValue][position.file.rawValue] = name
         return true
-    }
-    
-    func indexOutOfRange(rank: Int, file: Int) -> Bool {
-        if rank < 1 || rank > 8 || file < 1 || file > 8 {
-            return true
-        }
-        return false
     }
 }
