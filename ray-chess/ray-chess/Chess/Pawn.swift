@@ -11,10 +11,12 @@ class Pawn: Piecable {
     var position: Piece.Position
     var color: Piece.Color
     var name: String
+    var maxCount: Int
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color
         self.position = position
+        self.maxCount = 8
         
         switch color {
         case .white:

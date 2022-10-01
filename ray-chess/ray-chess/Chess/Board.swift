@@ -38,28 +38,15 @@ extension Board {
         guard IsEmptyPosition(position: pawn.position) else {
             return false
         }
-        guard !IsOverPawnMaxCount(color: pawn.color) else {
+        guard !IsOverPieceMaxCount(piece: pawn) else {
             return false
         }
         
         return true
     }
     
-    func isCorrectRankPosition(piece: Piece) -> Bool {
-        let rank = piece.position.rank
-        
-        switch piece.getColor() {
-        case .white:
-            if rank == .seven || rank == .eight {
-                return true
-            }
-        case .black:
-            if rank == .one || rank == .two {
-                return true
-            }
-        }
-        
-        return false
+    func isCorrectRankPosition(piece: Piecable) -> Bool {
+        return piece.isInitializableRank()
     }
     
     func IsEmptyPosition(position: Piece.Position) -> Bool {
@@ -73,37 +60,18 @@ extension Board {
         }
     }
     
-    func IsOverPawnMaxCount(color: Piece.Color) -> Bool {
-        switch color {
-        case .white:
-            if theNumberOfWhitePawn() > PawnConst.maxCount {
-                return true
-            }
-        case .black:
-            if theNumberOfBlackPawn() > PawnConst.maxCount {
-                return true
-            }
-        }
-        return false
+    func IsOverPieceMaxCount(piece: Piecable) -> Bool {
+        let numberOfPiece = theNumberOf(targetPiece: piece)
+        
+        return numberOfPiece > piece.maxCount
     }
     
-    func theNumberOfWhitePawn() -> Int {
+    func theNumberOf(targetPiece: Piecable) -> Int {
         var num: Int = 0
         matrix.forEach { ranks in
             ranks.forEach { piece in
-                if piece?.color == .white {
-                    num += 1
-                }
-            }
-        }
-        return num
-    }
-    
-    func theNumberOfBlackPawn() -> Int {
-        var num: Int = 0
-        matrix.forEach { ranks in
-            ranks.forEach { piece in
-                if piece?.color == .black {
+                if piece?.color == targetPiece.color
+                    || piece?.name == targetPiece.name {
                     num += 1
                 }
             }
@@ -141,39 +109,22 @@ extension Board {
             return false
         }
         
-        if fromPiece.color == currentColor {
-            return true
-        } else {
-            return false
-        }
+        return fromPiece.color == currentColor
     }
     
     func existSameColorPiece(from: Piece.Position, to: Piece.Position) -> Bool {
         let fromPiece = getPieceOnBoard(position: from)
         let toPiece = getPieceOnBoard(position: to)
         
-        if fromPiece?.color == toPiece?.color {
-            return true
-        } else {
-            return false
-        }
+        return fromPiece?.color == toPiece?.color
     }
     
-    func isOneStepFoward(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Bool {
-        if from.file == to.file {
-            switch currentColor {
-            case .white:
-                if (to.rank.rawValue - from.rank.rawValue) == -1 {
-                    return true
-                }
-            case .black:
-                if (to.rank.rawValue - from.rank.rawValue) == 1 {
-                    return true
-                }
-            }
+    func isReachablePosition(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Bool {
+        guard let piece = getPieceOnBoard(position: from) else {
+            return false
         }
         
-        return false
+        return piece.reachablePosition().contains(to)
     }
 }
 
