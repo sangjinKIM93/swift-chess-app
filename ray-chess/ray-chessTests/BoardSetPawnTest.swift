@@ -46,8 +46,8 @@ class BoardSetPawnTest: XCTestCase {
         let onePiece = Piece(color: .white, position: Piece.Position(rank: .one, file: .A), name: "")
         let nPiece = Piece(color: .white, position: Piece.Position(rank: .eight, file: .H), name: "")
         
-        XCTAssertEqual(board.setPieceOnBoard(position: onePiece.position, name: onePiece.name), true)
-        XCTAssertEqual(board.setPieceOnBoard(position: nPiece.position, name: nPiece.name), true)
+        XCTAssertEqual(board.setPieceOnBoard(position: onePiece.position, piece: onePiece), true)
+        XCTAssertEqual(board.setPieceOnBoard(position: nPiece.position, piece: nPiece), true)
         
     }
     
@@ -76,7 +76,7 @@ class BoardSetPawnTest: XCTestCase {
             true
         )
         
-        board.setPieceOnBoard(position: dummyPawn.position, name: dummyPawn.name)
+        board.setPieceOnBoard(position: dummyPawn.position, piece: dummyPawn)
         
         let noEmptySpacePawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
         

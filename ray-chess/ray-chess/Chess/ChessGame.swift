@@ -23,7 +23,7 @@ class ChessGame {
             let pawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: file))
             
             if board.canSetPawn(pawn: pawn) {
-                board.setPieceOnBoard(position: pawn.position, name: pawn.name)
+                board.setPieceOnBoard(position: pawn.position, piece: pawn)
             }
         }
     }
@@ -33,7 +33,7 @@ class ChessGame {
             let pawn = Pawn(color: .white, position: Piece.Position(rank: .seven, file: file))
             
             if board.canSetPawn(pawn: pawn) {
-                board.setPieceOnBoard(position: pawn.position, name: pawn.name)
+                board.setPieceOnBoard(position: pawn.position, piece: pawn)
             }
         }
     }
