@@ -7,26 +7,15 @@
 
 import Foundation
 
-class Piece {
-    var position: Piece.Position
-    var color: Piece.Color
-    var name: String
-    
-    init(color: Piece.Color, position: Piece.Position, name: String) {
-        self.color = color
-        self.position = position
-        self.name = name
-    }
-    
-    func getColor() -> Piece.Color {
-        return self.color
-    }
-    
-    func getPosition() -> Piece.Position {
-        return self.position
-    }
-    
-    struct Position {
+protocol Piecable {
+    var position: Piece.Position { get set }
+    var color: Piece.Color { get set }
+    var name: String { get set }
+    func reachablePosition() -> [Piece.Position]
+}
+
+enum Piece {
+    struct Position: Equatable {
         var rank: Rank
         var file: File
     }
@@ -34,22 +23,23 @@ class Piece {
     enum Color {
         case white
         case black
-        
-        func getSymbolString() -> String {
-            switch self {
-            case .white:
-                return "9"
-            case .black:
-                return "F"
-            }
-        }
     }
 }
 
 enum File: Int, CaseIterable {
     case A = 0, B, C, D, E, F, G, H
+    
+    func getPoint(added: Int) -> File? {
+        let file = self.rawValue + added
+        return File(rawValue: file)
+    }
 }
 
 enum Rank: Int, CaseIterable {
     case one = 0, two, three, four, five, six, seven, eight
+    
+    func getPoint(added: Int) -> Rank? {
+        let rank = self.rawValue + added
+        return Rank(rawValue: rank)
+    }
 }
