@@ -11,7 +11,22 @@ protocol Piecable {
     var position: Piece.Position { get set }
     var color: Piece.Color { get set }
     var name: String { get set }
+    var maxCount: Int { get set }
     func reachablePosition() -> [Piece.Position]
+    func isInitializableRank() -> Bool
+}
+
+extension Piecable {
+    func isInitializableRank() -> Bool {
+        let rank = self.position.rank
+        
+        switch color {
+        case .white:
+            return rank == .seven || rank == .eight
+        case .black:
+            return rank == .one || rank == .two
+        }
+    }
 }
 
 enum Piece {
