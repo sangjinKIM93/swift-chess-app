@@ -7,14 +7,35 @@
 
 import Foundation
 
-class Pawn: Piece {
+class Pawn: Piecable {
+    var position: Piece.Position
+    var color: Piece.Color
+    var name: String
     
     init(color: Piece.Color, position: Piece.Position) {
+        self.color = color
+        self.position = position
+        
         switch color {
         case .white:
-            super.init(color: color, position: position, name: PawnConst.whiteName)
+            self.name = PawnConst.whiteName
         case .black:
-            super.init(color: color, position: position, name: PawnConst.blackName)
+            self.name = PawnConst.blackName
+        }
+    }
+    
+    func reachablePosition() -> [Piece.Position] {
+        switch color {
+        case .white:
+            guard let newRank = self.position.rank.getPoint(added: -1) else {
+                return []
+            }
+            return [Piece.Position(rank: newRank, file: self.position.file)]
+        case .black:
+            guard let newRank = self.position.rank.getPoint(added: 1) else {
+                return []
+            }
+            return [Piece.Position(rank: newRank, file: self.position.file)]
         }
     }
 }

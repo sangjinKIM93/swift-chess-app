@@ -11,10 +11,10 @@ import Foundation
 // - 말 셋팅 관리
 // - 말 움직임 관리
 class Board {
-    var matrix: [[Piece?]]
+    private(set) var matrix: [[Piecable?]]
     
     init() {
-        let rank = Array<Piece?>(repeating: nil, count: 8)
+        let rank = Array<Piecable?>(repeating: nil, count: 8)
         self.matrix = Array(repeating: rank, count: 8)
     }
     
@@ -121,7 +121,7 @@ extension Board {
         guard !existSameColorPiece(from: from, to: to) else {
             return false
         }
-        guard isOneStepFoward(from: from, to: to, currentColor: currentColor) else {
+        guard isReachablePosition(from: from, to: to, currentColor: currentColor) else {
             return false
         }
         
@@ -129,7 +129,7 @@ extension Board {
     }
     
     func movePawn(from: Piece.Position, to: Piece.Position) {
-        let pawn = getPieceOnBoard(position: from)
+        var pawn = getPieceOnBoard(position: from)
         pawn?.position = to
         setPieceOnBoard(position: to, piece: pawn)
         
@@ -180,12 +180,12 @@ extension Board {
 
 // MARK: - Matrix Common
 extension Board {
-    func getPieceOnBoard(position: Piece.Position) -> Piece? {
+    func getPieceOnBoard(position: Piece.Position) -> Piecable? {
         return matrix[position.rank.rawValue][position.file.rawValue]
     }
     
     @discardableResult
-    func setPieceOnBoard(position: Piece.Position, piece: Piece?) -> Bool {
+    func setPieceOnBoard(position: Piece.Position, piece: Piecable?) -> Bool {
         matrix[position.rank.rawValue][position.file.rawValue] = piece
         return true
     }
