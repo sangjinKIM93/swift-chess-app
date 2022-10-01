@@ -50,7 +50,6 @@ extension Board {
     }
     
     func IsEmptyPosition(position: Piece.Position) -> Bool {
-        // piece를 파라미터로 받는게 좋을까?
         let piece = getPieceOnBoard(position: position)
         
         if piece == nil {
