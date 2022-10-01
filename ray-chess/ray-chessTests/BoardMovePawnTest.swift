@@ -53,9 +53,8 @@ class BoardMovePawnTest: XCTestCase {
         XCTAssertEqual(firstResult, true)
         
         chessGame.board.movePawn(
-            from: Piece.Position(rank: .three, file: .B),
-            to: Piece.Position(rank: .six, file: .B),
-            pieceName: PawnConst.blackName
+            from: Piece.Position(rank: .two, file: .B),
+            to: Piece.Position(rank: .six, file: .B)
         )
         
         let secondResult = chessGame.board.canMovePawn(

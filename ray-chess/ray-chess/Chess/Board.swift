@@ -11,10 +11,10 @@ import Foundation
 // - 말 셋팅 관리
 // - 말 움직임 관리
 class Board {
-    var matrix: [[String]]
+    var matrix: [[Piece?]]
     
     init() {
-        let rank = Array(repeating: ".", count: 8)
+        let rank = Array<Piece?>(repeating: nil, count: 8)
         self.matrix = Array(repeating: rank, count: 8)
     }
     
@@ -66,7 +66,7 @@ extension Board {
         // piece를 파라미터로 받는게 좋을까?
         let piece = getPieceOnBoard(position: position)
         
-        if piece == "." {
+        if piece == nil {
             return true
         } else {
             return false
@@ -91,7 +91,7 @@ extension Board {
         var num: Int = 0
         matrix.forEach { ranks in
             ranks.forEach { piece in
-                if piece == PawnConst.whiteName {
+                if piece?.color == .white {
                     num += 1
                 }
             }
@@ -103,7 +103,7 @@ extension Board {
         var num: Int = 0
         matrix.forEach { ranks in
             ranks.forEach { piece in
-                if piece == PawnConst.blackName {
+                if piece?.color == .black {
                     num += 1
                 }
             }
@@ -128,9 +128,12 @@ extension Board {
         return true
     }
     
-    func movePawn(from: Piece.Position, to: Piece.Position, pieceName: String) {
-        setPieceOnBoard(position: from, name: ".")
-        setPieceOnBoard(position: to, name: pieceName)
+    func movePawn(from: Piece.Position, to: Piece.Position) {
+        let pawn = getPieceOnBoard(position: from)
+        pawn?.position = to
+        setPieceOnBoard(position: to, piece: pawn)
+        
+        setPieceOnBoard(position: from, piece: nil)
     }
     
     func isMyPiece(from: Piece.Position, currentColor: Piece.Color) -> Bool {
@@ -138,7 +141,7 @@ extension Board {
             return false
         }
         
-        if fromPiece.suffix(1) == currentColor.getSymbolString() {
+        if fromPiece.color == currentColor {
             return true
         } else {
             return false
@@ -149,7 +152,7 @@ extension Board {
         let fromPiece = getPieceOnBoard(position: from)
         let toPiece = getPieceOnBoard(position: to)
         
-        if toPiece?.suffix(1) == fromPiece?.suffix(1) {
+        if fromPiece?.color == toPiece?.color {
             return true
         } else {
             return false
@@ -177,13 +180,13 @@ extension Board {
 
 // MARK: - Matrix Common
 extension Board {
-    func getPieceOnBoard(position: Piece.Position) -> String? {
+    func getPieceOnBoard(position: Piece.Position) -> Piece? {
         return matrix[position.rank.rawValue][position.file.rawValue]
     }
     
     @discardableResult
-    func setPieceOnBoard(position: Piece.Position, name: String) -> Bool {
-        matrix[position.rank.rawValue][position.file.rawValue] = name
+    func setPieceOnBoard(position: Piece.Position, piece: Piece?) -> Bool {
+        matrix[position.rank.rawValue][position.file.rawValue] = piece
         return true
     }
 }

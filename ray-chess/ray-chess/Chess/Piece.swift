@@ -50,6 +50,6 @@ enum File: Int, CaseIterable {
     case A = 0, B, C, D, E, F, G, H
 }
 
-enum Rank: Int {
+enum Rank: Int, CaseIterable {
     case one = 0, two, three, four, five, six, seven, eight
 }
