@@ -28,17 +28,24 @@ class Board {
         }
     }
     
-    enum ErrorCase: Error {
+    enum SetError: Error {
         case isEmptySpace
         case wrongInitRank
         case isFulledPosition
         case isOverMaxCount
     }
+    
+    enum MoveError: Error {
+        case isEmptySpace
+        case isNotMyPiece
+        case existSameColorPiece
+        case isNotReachable
+    }
 }
 
 // MARK: - Pawn initialize
 extension Board {
-    func canSetPawn(pawn: Pawn) -> Result<Bool, Board.ErrorCase> {
+    func canSetPawn(pawn: Pawn) -> Result<Bool, Board.SetError> {
         guard isCorrectRankPosition(piece: pawn) else {
             return .failure(.wrongInitRank)
         }
@@ -84,18 +91,21 @@ extension Board {
 
 // MARK: - Pawn move
 extension Board {
-    func canMovePawn(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Bool {
-        guard isMyPiece(from: from, currentColor: currentColor) else {
-            return false
+    func canMovePawn(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Result<Bool, Board.MoveError> {
+        guard let targetPiece = getPieceOnBoard(position: from) else {
+            return .failure(.isEmptySpace)
         }
-        guard !existSameColorPiece(from: from, to: to) else {
-            return false
+        guard isMyPiece(targetPiece: targetPiece, currentColor: currentColor) else {
+            return .failure(.isNotMyPiece)
         }
-        guard isReachablePosition(from: from, to: to, currentColor: currentColor) else {
-            return false
+        guard !existSameColorPiece(targetPiece: targetPiece, to: to) else {
+            return .failure(.existSameColorPiece)
+        }
+        guard isReachablePosition(targetPiece: targetPiece, to: to) else {
+            return .failure(.isNotReachable)
         }
         
-        return true
+        return .success(true)
     }
     
     func movePawn(from: Piece.Position, to: Piece.Position) {
@@ -106,27 +116,18 @@ extension Board {
         setPieceOnBoard(position: from, piece: nil)
     }
     
-    func isMyPiece(from: Piece.Position, currentColor: Piece.Color) -> Bool {
-        guard let fromPiece = getPieceOnBoard(position: from) else {
-            return false
-        }
-        
-        return fromPiece.color == currentColor
+    func isMyPiece(targetPiece: Piecable, currentColor: Piece.Color) -> Bool {
+        return targetPiece.color == currentColor
     }
     
-    func existSameColorPiece(from: Piece.Position, to: Piece.Position) -> Bool {
-        let fromPiece = getPieceOnBoard(position: from)
+    func existSameColorPiece(targetPiece: Piecable, to: Piece.Position) -> Bool {
         let toPiece = getPieceOnBoard(position: to)
         
-        return fromPiece?.color == toPiece?.color
+        return targetPiece.color == toPiece?.color
     }
     
-    func isReachablePosition(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Bool {
-        guard let piece = getPieceOnBoard(position: from) else {
-            return false
-        }
-        
-        return piece.reachablePosition().contains(to)
+    func isReachablePosition(targetPiece: Piecable, to: Piece.Position) -> Bool {
+        return targetPiece.reachablePosition().contains(to)
     }
 }
 
