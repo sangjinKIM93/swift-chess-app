@@ -13,7 +13,7 @@ protocol Piecable {
     var name: String { get set }
     var maxCount: Int { get set }
     func reachablePosition() -> [Piece.Position]
-    func isInitializableRank() -> Bool
+    func initializablePositions() -> [Piece.Position]
     func getSymbol() -> String
 }
 

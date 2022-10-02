@@ -80,7 +80,7 @@ extension Board {
     }
     
     func isCorrectRankPosition(piece: Piecable) -> Bool {
-        return piece.isInitializableRank()
+        return piece.initializablePositions().contains(piece.position)
     }
     
     func IsEmptyPosition(position: Piece.Position) -> Bool {

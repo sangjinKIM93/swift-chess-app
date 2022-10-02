@@ -20,9 +20,9 @@ class Pawn: Piecable {
         
         switch color {
         case .white:
-            self.name = "U+2569"
+            self.name = "U+2659"
         case .black:
-            self.name = "U+256F"
+            self.name = "U+265F"
         }
     }
     
@@ -41,15 +41,20 @@ class Pawn: Piecable {
         }
     }
     
-    func isInitializableRank() -> Bool {
-        let rank = self.position.rank
+    func initializablePositions() -> [Piece.Position] {
+        var positions = [Piece.Position]()
         
         switch color {
         case .white:
-            return rank == .seven
+            File.allCases.forEach { file in
+                positions.append(Piece.Position(rank: .seven, file: file))
+            }
         case .black:
-            return rank == .two
+            File.allCases.forEach { file in
+                positions.append(Piece.Position(rank: .two, file: file))
+            }
         }
+        return positions
     }
     
     func getSymbol() -> String {
