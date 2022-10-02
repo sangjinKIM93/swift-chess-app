@@ -32,14 +32,14 @@ class BoardMovePawnTest: XCTestCase {
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .black
         )
-        XCTAssertEqual(firstResult, true)
+        XCTAssertEqual(firstResult, .success(true))
         
         let secondResult = chessGame.board.canMovePawn(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .white
         )
-        XCTAssertEqual(secondResult, false)
+        XCTAssertEqual(secondResult, .failure(.isNotMyPiece))
     }
     
     func checkExistSameColorPiece() {
@@ -50,7 +50,7 @@ class BoardMovePawnTest: XCTestCase {
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .black
         )
-        XCTAssertEqual(firstResult, true)
+        XCTAssertEqual(firstResult, .success(true))
         
         chessGame.board.movePawn(
             from: Piece.Position(rank: .two, file: .B),
@@ -62,7 +62,7 @@ class BoardMovePawnTest: XCTestCase {
             to: Piece.Position(rank: .seven, file: .B),
             currentColor: .black
         )
-        XCTAssertEqual(secondResult, true)
+        XCTAssertEqual(secondResult, .success(true))
     }
     
     func isOneStepFoward() {
@@ -73,13 +73,13 @@ class BoardMovePawnTest: XCTestCase {
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .black
         )
-        XCTAssertEqual(firstResult, true)
+        XCTAssertEqual(firstResult, .success(true))
         
         let secondResult = chessGame.board.canMovePawn(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .one, file: .B),
             currentColor: .black
         )
-        XCTAssertEqual(secondResult, false)
+        XCTAssertEqual(secondResult, .failure(.isNotReachable))
     }
 }
