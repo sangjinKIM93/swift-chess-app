@@ -20,9 +20,9 @@ class Pawn: Piecable {
         
         switch color {
         case .white:
-            self.name = PawnConst.whiteName
+            self.name = "U+2569"
         case .black:
-            self.name = PawnConst.blackName
+            self.name = "U+256F"
         }
     }
     
@@ -40,13 +40,16 @@ class Pawn: Piecable {
             return [Piece.Position(rank: newRank, file: self.position.file)]
         }
     }
-}
-
-struct PawnConst {
-    static let maxCount: Int = 8
-    static let whiteStartRank: Int = 7
-    static let blackStartRank: Int = 2
-    static let blackName = "U+256F"
-    static let whiteName = "U+2569"
+    
+    func isInitializableRank() -> Bool {
+        let rank = self.position.rank
+        
+        switch color {
+        case .white:
+            return rank == .seven
+        case .black:
+            return rank == .two
+        }
+    }
 }
 

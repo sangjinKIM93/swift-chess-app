@@ -16,19 +16,6 @@ protocol Piecable {
     func isInitializableRank() -> Bool
 }
 
-extension Piecable {
-    func isInitializableRank() -> Bool {
-        let rank = self.position.rank
-        
-        switch color {
-        case .white:
-            return rank == .seven || rank == .eight
-        case .black:
-            return rank == .one || rank == .two
-        }
-    }
-}
-
 enum Piece {
     struct Position: Equatable {
         var rank: Rank
