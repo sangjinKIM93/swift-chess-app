@@ -27,22 +27,29 @@ class Board {
             print(rank)
         }
     }
+    
+    enum ErrorCase: Error {
+        case isEmptySpace
+        case wrongInitRank
+        case isFulledPosition
+        case isOverMaxCount
+    }
 }
 
 // MARK: - Pawn initialize
 extension Board {
-    func canSetPawn(pawn: Pawn) -> Bool {
+    func canSetPawn(pawn: Pawn) -> Result<Bool, Board.ErrorCase> {
         guard isCorrectRankPosition(piece: pawn) else {
-            return false
+            return .failure(.wrongInitRank)
         }
         guard IsEmptyPosition(position: pawn.position) else {
-            return false
+            return .failure(.isFulledPosition)
         }
         guard !IsOverPieceMaxCount(piece: pawn) else {
-            return false
+            return .failure(.isOverMaxCount)
         }
         
-        return true
+        return .success(true)
     }
     
     func isCorrectRankPosition(piece: Piecable) -> Bool {
@@ -52,11 +59,7 @@ extension Board {
     func IsEmptyPosition(position: Piece.Position) -> Bool {
         let piece = getPieceOnBoard(position: position)
         
-        if piece == nil {
-            return true
-        } else {
-            return false
-        }
+        return piece == nil
     }
     
     func IsOverPieceMaxCount(piece: Piecable) -> Bool {
