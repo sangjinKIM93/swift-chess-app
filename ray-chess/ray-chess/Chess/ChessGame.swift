@@ -22,8 +22,11 @@ class ChessGame {
         File.allCases.forEach { file in
             let pawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: file))
             
-            if board.canSetPawn(pawn: pawn) {
+            switch board.canSetPawn(pawn: pawn) {
+            case .success(_):
                 board.setPieceOnBoard(position: pawn.position, piece: pawn)
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -32,8 +35,11 @@ class ChessGame {
         File.allCases.forEach { file in
             let pawn = Pawn(color: .white, position: Piece.Position(rank: .seven, file: file))
             
-            if board.canSetPawn(pawn: pawn) {
+            switch board.canSetPawn(pawn: pawn) {
+            case .success(_):
                 board.setPieceOnBoard(position: pawn.position, piece: pawn)
+            case .failure(let error):
+                print(error)
             }
         }
     }
