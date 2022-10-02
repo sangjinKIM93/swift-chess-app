@@ -14,6 +14,7 @@ protocol Piecable {
     var maxCount: Int { get set }
     func reachablePosition() -> [Piece.Position]
     func isInitializableRank() -> Bool
+    func getSymbol() -> String
 }
 
 enum Piece {
