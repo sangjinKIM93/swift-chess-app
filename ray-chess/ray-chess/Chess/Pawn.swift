@@ -51,5 +51,14 @@ class Pawn: Piecable {
             return rank == .two
         }
     }
+    
+    func getSymbol() -> String {
+        switch color {
+        case .white:
+            return "♙"
+        case .black:
+            return "♟"
+        }
+    }
 }
 

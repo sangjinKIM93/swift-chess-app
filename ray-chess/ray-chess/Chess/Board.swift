@@ -18,13 +18,33 @@ class Board {
         self.matrix = Array(repeating: rank, count: 8)
     }
     
-    func showScore() {
-        //
+    func getScore() -> (black: Int, white: Int) {
+        var blackScore = 0
+        var whiteScore = 0
+
+        matrix.forEach { rank in
+            rank.forEach { piece in
+                if piece?.color == .white {
+                    whiteScore += 1
+                }
+                if piece?.color == .black {
+                    blackScore += 1
+                }
+            }
+        }
+        
+        return (blackScore, whiteScore)
     }
     
-    func display() {
-        matrix.forEach { rank in
-            print(rank)
+    func display() -> [[String]] {
+        matrix.map { rank -> [String] in
+            let formattedRank = rank.map { piece -> String in
+                guard let piece = piece else {
+                    return "."
+                }
+                return piece.getSymbol()
+            }
+            return formattedRank
         }
     }
     
