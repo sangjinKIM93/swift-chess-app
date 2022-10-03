@@ -45,9 +45,9 @@ class Rook: Piecable {
     
     func initializablePositions() -> [Piece.Position] {
         switch color {
-        case .white:
-            return [Piece.Position(rank: .one, file: .A), Piece.Position(rank: .one, file: .H)]
         case .black:
+            return [Piece.Position(rank: .one, file: .A), Piece.Position(rank: .one, file: .H)]
+        case .white:
             return [Piece.Position(rank: .eight, file: .A), Piece.Position(rank: .eight, file: .H)]
         }
     }

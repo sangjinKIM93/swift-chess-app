@@ -92,7 +92,7 @@ extension Board {
     func IsOverPieceMaxCount(piece: Piecable) -> Bool {
         let numberOfPiece = theNumberOf(targetPiece: piece)
         
-        return numberOfPiece > piece.maxCount
+        return numberOfPiece >= piece.maxCount
     }
     
     func theNumberOf(targetPiece: Piecable) -> Int {

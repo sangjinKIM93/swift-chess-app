@@ -58,9 +58,9 @@ class Bishop: Piecable {
 
     func initializablePositions() -> [Piece.Position] {
         switch color {
-        case .white:
-            return [Piece.Position(rank: .one, file: .C), Piece.Position(rank: .one, file: .F)]
         case .black:
+            return [Piece.Position(rank: .one, file: .C), Piece.Position(rank: .one, file: .F)]
+        case .white:
             return [Piece.Position(rank: .eight, file: .C), Piece.Position(rank: .eight, file: .F)]
         }
     }
