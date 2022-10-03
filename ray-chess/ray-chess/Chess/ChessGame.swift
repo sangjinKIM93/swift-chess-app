@@ -47,6 +47,20 @@ class ChessGame {
         initWhiteRook()
     }
     
+    func initializeQueen() {
+        [
+            Queen(color: .white, position: .init(rank: .eight, file: .E)),
+            Queen(color: .black, position: .init(rank: .one, file: .E))
+        ].forEach { rook in
+            switch board.canSetPiece(piece: rook) {
+            case .success(_):
+                board.setPieceOnBoard(position: rook.position, piece: rook)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func initBlackPawn() {
         File.allCases.forEach { file in
             let pawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: file))
