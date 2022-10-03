@@ -8,7 +8,7 @@
 import XCTest
 @testable import ray_chess
 
-class BoardSetPawnTest: XCTestCase {
+class BoardSetPieceTest: XCTestCase {
 
     override func setUpWithError() throws {}
 
@@ -34,11 +34,6 @@ class BoardSetPawnTest: XCTestCase {
         board.matrix.forEach { rank in
             XCTAssertEqual(rank.count, 8)
         }
-        
-//        // 개체 수 테스트
-//        XCTAssertEqual(board.getPieceOnBoard(position: Piece.Position(rank: .one, file: .A)) != nil, true)
-//        XCTAssertEqual(board.getPieceOnBoard(position: Piece.Position(rank: .eight, file: .H)) != nil, true)
-//        XCTAssertEqual(board.getPieceOnBoard(position: Piece.Position(rank: .two, file: .B)) != nil, true)
     }
     
     func checkSetPiece() {

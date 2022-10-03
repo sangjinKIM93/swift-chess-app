@@ -13,7 +13,7 @@
 		48AABC7128DE90B70085F577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AABC6F28DE90B70085F577 /* Main.storyboard */; };
 		48AABC7328DE90BB0085F577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48AABC7228DE90BB0085F577 /* Assets.xcassets */; };
 		48AABC7628DE90BB0085F577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AABC7428DE90BB0085F577 /* LaunchScreen.storyboard */; };
-		48AABC8128DE90BB0085F577 /* BoardSetPawnTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC8028DE90BB0085F577 /* BoardSetPawnTest.swift */; };
+		48AABC8128DE90BB0085F577 /* BoardSetPieceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC8028DE90BB0085F577 /* BoardSetPieceTest.swift */; };
 		48AABC8B28DE90BB0085F577 /* ray_chessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC8A28DE90BB0085F577 /* ray_chessUITests.swift */; };
 		48AABC8D28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC8C28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift */; };
 		48AABC9B28DE99090085F577 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC9A28DE99090085F577 /* Board.swift */; };
@@ -21,7 +21,7 @@
 		48AABCA328DFFA8A0085F577 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA228DFFA8A0085F577 /* Piece.swift */; };
 		48AABCA528E13D360085F577 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA428E13D360085F577 /* ChessGame.swift */; };
 		48AABCA828E16A3D0085F577 /* Array+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA728E16A3D0085F577 /* Array+ext.swift */; };
-		48AABCAA28E17A820085F577 /* BoardMovePawnTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA928E17A820085F577 /* BoardMovePawnTest.swift */; };
+		48AABCAA28E17A820085F577 /* BoardMovePieceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA928E17A820085F577 /* BoardMovePieceTest.swift */; };
 		48BC37CB28E9C67B0040F287 /* BoardBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */; };
 		48BC37CD28E9C9B70040F287 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CC28E9C9B70040F287 /* Bishop.swift */; };
 		48BC37CF28EA6C050040F287 /* BishopTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CE28EA6C050040F287 /* BishopTest.swift */; };
@@ -56,7 +56,7 @@
 		48AABC7528DE90BB0085F577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48AABC7728DE90BB0085F577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48AABC7C28DE90BB0085F577 /* ray-chessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ray-chessTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48AABC8028DE90BB0085F577 /* BoardSetPawnTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetPawnTest.swift; sourceTree = "<group>"; };
+		48AABC8028DE90BB0085F577 /* BoardSetPieceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSetPieceTest.swift; sourceTree = "<group>"; };
 		48AABC8628DE90BB0085F577 /* ray-chessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ray-chessUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48AABC8A28DE90BB0085F577 /* ray_chessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ray_chessUITests.swift; sourceTree = "<group>"; };
 		48AABC8C28DE90BB0085F577 /* ray_chessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ray_chessUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		48AABCA228DFFA8A0085F577 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		48AABCA428E13D360085F577 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 		48AABCA728E16A3D0085F577 /* Array+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ext.swift"; sourceTree = "<group>"; };
-		48AABCA928E17A820085F577 /* BoardMovePawnTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMovePawnTest.swift; sourceTree = "<group>"; };
+		48AABCA928E17A820085F577 /* BoardMovePieceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMovePieceTest.swift; sourceTree = "<group>"; };
 		48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBasicTest.swift; sourceTree = "<group>"; };
 		48BC37CC28E9C9B70040F287 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		48BC37CE28EA6C050040F287 /* BishopTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTest.swift; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 		48AABC7F28DE90BB0085F577 /* ray-chessTests */ = {
 			isa = PBXGroup;
 			children = (
-				48AABC8028DE90BB0085F577 /* BoardSetPawnTest.swift */,
-				48AABCA928E17A820085F577 /* BoardMovePawnTest.swift */,
+				48AABC8028DE90BB0085F577 /* BoardSetPieceTest.swift */,
+				48AABCA928E17A820085F577 /* BoardMovePieceTest.swift */,
 				48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */,
 				48BC37CE28EA6C050040F287 /* BishopTest.swift */,
 				48BC37D228EA77990040F287 /* RookTest.swift */,
@@ -334,9 +334,9 @@
 			files = (
 				48BC37CF28EA6C050040F287 /* BishopTest.swift in Sources */,
 				48BC37D328EA77990040F287 /* RookTest.swift in Sources */,
-				48AABCAA28E17A820085F577 /* BoardMovePawnTest.swift in Sources */,
+				48AABCAA28E17A820085F577 /* BoardMovePieceTest.swift in Sources */,
 				48BC37CB28E9C67B0040F287 /* BoardBasicTest.swift in Sources */,
-				48AABC8128DE90BB0085F577 /* BoardSetPawnTest.swift in Sources */,
+				48AABC8128DE90BB0085F577 /* BoardSetPieceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
