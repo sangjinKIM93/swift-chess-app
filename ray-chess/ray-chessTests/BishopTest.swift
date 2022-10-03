@@ -21,7 +21,7 @@ class BishopTest: XCTestCase {
     func testReachablePostion() {
         let bishop = Bishop(color: .white, position: Piece.Position(rank: .five, file: .D))
         
-        var result = bishop.reachablePosition()
+        var result = bishop.reachablePositions()
         var expectedResult = [
             Piece.Position(rank: .eight, file: .A),
             Piece.Position(rank: .two, file: .A),

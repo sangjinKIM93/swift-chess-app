@@ -147,7 +147,7 @@ extension Board {
     }
     
     func isReachablePosition(targetPiece: Piecable, to: Piece.Position) -> Bool {
-        return targetPiece.reachablePosition().contains(to)
+        return targetPiece.reachablePositions().contains(to)
     }
 }
 

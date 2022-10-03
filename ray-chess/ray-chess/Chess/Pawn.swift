@@ -26,7 +26,7 @@ class Pawn: Piecable {
         }
     }
     
-    func reachablePosition() -> [Piece.Position] {
+    func reachablePositions() -> [Piece.Position] {
         switch color {
         case .white:
             guard let newRank = self.position.rank.getPoint(added: -1) else {

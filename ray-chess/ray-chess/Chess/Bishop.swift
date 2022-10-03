@@ -26,7 +26,7 @@ class Bishop: Piecable {
         }
     }
 
-    func reachablePosition() -> [Piece.Position] {
+    func reachablePositions() -> [Piece.Position] {
         let maximumReach = max(
             (File.H.rawValue) - position.file.rawValue,
             (Rank.eight.rawValue) - position.rank.rawValue,
