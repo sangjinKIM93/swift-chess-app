@@ -56,7 +56,7 @@ enum Piece {
         case dot
     }
     
-    enum Direction {
+    enum Direction: CaseIterable {
         case top
         case topRight
         case right

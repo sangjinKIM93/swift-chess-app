@@ -22,6 +22,7 @@
 		48AABCA528E13D360085F577 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA428E13D360085F577 /* ChessGame.swift */; };
 		48AABCA828E16A3D0085F577 /* Array+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA728E16A3D0085F577 /* Array+ext.swift */; };
 		48AABCAA28E17A820085F577 /* BoardMovePieceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABCA928E17A820085F577 /* BoardMovePieceTest.swift */; };
+		48BA3A3B28EB170F006BCA3D /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA3A3A28EB170F006BCA3D /* Queen.swift */; };
 		48BC37CB28E9C67B0040F287 /* BoardBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */; };
 		48BC37CD28E9C9B70040F287 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CC28E9C9B70040F287 /* Bishop.swift */; };
 		48BC37CF28EA6C050040F287 /* BishopTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CE28EA6C050040F287 /* BishopTest.swift */; };
@@ -67,6 +68,7 @@
 		48AABCA428E13D360085F577 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 		48AABCA728E16A3D0085F577 /* Array+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ext.swift"; sourceTree = "<group>"; };
 		48AABCA928E17A820085F577 /* BoardMovePieceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMovePieceTest.swift; sourceTree = "<group>"; };
+		48BA3A3A28EB170F006BCA3D /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBasicTest.swift; sourceTree = "<group>"; };
 		48BC37CC28E9C9B70040F287 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		48BC37CE28EA6C050040F287 /* BishopTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTest.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				48AABC9A28DE99090085F577 /* Board.swift */,
 				48BC37CC28E9C9B70040F287 /* Bishop.swift */,
 				48BC37D028EA71DD0040F287 /* Rook.swift */,
+				48BA3A3A28EB170F006BCA3D /* Queen.swift */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				48BC37D128EA71DD0040F287 /* Rook.swift in Sources */,
 				48AABC6E28DE90B70085F577 /* ViewController.swift in Sources */,
 				48AABC6A28DE90B70085F577 /* AppDelegate.swift in Sources */,
+				48BA3A3B28EB170F006BCA3D /* Queen.swift in Sources */,
 				48AABCA528E13D360085F577 /* ChessGame.swift in Sources */,
 				48AABC9B28DE99090085F577 /* Board.swift in Sources */,
 				48AABCA328DFFA8A0085F577 /* Piece.swift in Sources */,

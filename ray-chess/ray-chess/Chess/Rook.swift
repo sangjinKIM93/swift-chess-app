@@ -17,7 +17,6 @@ class Rook: Piecable {
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color
         self.position = position
-        self.maxCount = 8
 
         switch color {
         case .white:

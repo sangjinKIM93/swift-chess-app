@@ -35,4 +35,25 @@ class ChessGameTest: XCTestCase {
         ].sorted { ($0.rank.rawValue, $0.file.rawValue) > ($1.rank.rawValue, $1.file.rawValue) }
         XCTAssertEqual(result2, expectedResult2)
     }
+    
+    func testPossibleToMoveQueen() {
+        let chessGame = ChessGame()
+        chessGame.initializeQueen()
+        chessGame.initializeBishop()
+        
+        let result = chessGame.possibleToMove(position: .init(rank: .one, file: .E))
+        let successResults = [
+            result.contains(.init(rank: .two, file: .E)),
+            result.contains(.init(rank: .two, file: .F)),
+            result.contains(.init(rank: .two, file: .D)),
+        ].allSatisfy { $0 == true }
+        
+        let failureResults = [
+            result.contains(.init(rank: .one, file: .C)),
+            result.contains(.init(rank: .one, file: .A)),
+        ].allSatisfy { $0 == false }
+        
+        XCTAssertEqual(successResults, true)
+        XCTAssertEqual(failureResults, true)
+    }
 }
