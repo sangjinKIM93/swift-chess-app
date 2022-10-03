@@ -8,7 +8,7 @@
 import XCTest
 @testable import ray_chess
 
-class BoardMovePawnTest: XCTestCase {
+class BoardMovePieceTest: XCTestCase {
 
     override func setUpWithError() throws {}
 
