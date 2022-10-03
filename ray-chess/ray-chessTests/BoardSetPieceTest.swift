@@ -14,66 +14,24 @@ class BoardSetPieceTest: XCTestCase {
 
     override func tearDownWithError() throws {}
 
-    func testExample() throws {
-        checkGetPiece()
-        checkSetPiece()
-        checkCanSetPawn()
-    }
-
-    func checkCanSetPawn() {
-        checkIsCorrectRank()
-        checkIsEmptyPosition()
-//        checkIsOverPawnMaxCount()
-    }
-    
-    func checkGetPiece() {
+    func testCanSetPawn() {
         let board = Board()
         
-        // 존재성 테스트
-        XCTAssertEqual(board.matrix.count, 8)
-        board.matrix.forEach { rank in
-            XCTAssertEqual(rank.count, 8)
-        }
-    }
-    
-    func checkSetPiece() {
-        let board = Board()
-        let onePiece = Pawn(color: .white, position: Piece.Position(rank: .one, file: .A))
-        let nPiece = Pawn(color: .white, position: Piece.Position(rank: .eight, file: .H))
-        
-        XCTAssertEqual(board.setPieceOnBoard(position: onePiece.position, piece: onePiece), true)
-        XCTAssertEqual(board.setPieceOnBoard(position: nPiece.position, piece: nPiece), true)
-        
-    }
-    
-    func checkIsCorrectRank() {
-        let board = Board()
-        
-        let invalidRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: .four, file: .A))
+        let pawn = Pawn(color: .black, position: .init(rank: .four, file: .A))
         XCTAssertEqual(
-            board.canSetPiece(piece: invalidRankPostionPawn),
+            board.canSetPiece(piece: pawn),
             .failure(.wrongInitRank)
         )
         
-        let validRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
+        let rook = Rook(color: .black, position: .init(rank: .two, file: .A))
         XCTAssertEqual(
-            board.canSetPiece(piece: validRankPostionPawn),
-            .success(true)
-        )
-    }
-    
-    func checkIsEmptyPosition() {
-        let board = Board()
-        
-        let dummyPawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
-        XCTAssertEqual(
-            board.canSetPiece(piece: dummyPawn),
-            .success(true)
+            board.canSetPiece(piece: rook),
+            .failure(.wrongInitRank)
         )
         
-        board.setPieceOnBoard(position: dummyPawn.position, piece: dummyPawn)
+        board.setPieceOnBoard(position: pawn.position, piece: pawn)
         
-        let noEmptySpacePawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
+        let noEmptySpacePawn = Pawn(color: .black, position: .init(rank: .two, file: .A))
         
         XCTAssertEqual(
             board.canSetPiece(piece: noEmptySpacePawn),
@@ -81,23 +39,59 @@ class BoardSetPieceTest: XCTestCase {
         )
     }
     
-//    func checkIsOverPawnMaxCount() {
-//        let board = Board()
-//
-//        for i in 1...9 {
-//            let pawn = Pawn(color: .black, position: Piece.Position(rank: 2, file: i))
-//            if i > 8 {
-//                XCTAssertEqual(
-//                    board.canSetPawn(pawn: pawn),
-//                    false
-//                )
-//            } else {
-//                XCTAssertEqual(
-//                    board.canSetPawn(pawn: pawn),
-//                    true
-//                )
-//            }
-//            board.setPieceOnBoard(position: pawn.position, name: pawn.name)
-//        }
-//    }
+    func testIsCorrectRank() {
+        let board = Board()
+        
+        let wrongPawn = Pawn(color: .white, position: .init(rank: .eight, file: .B))
+        let correctPawn = Pawn(color: .white, position: .init(rank: .seven, file: .B))
+        XCTAssertEqual(board.isCorrectRankPosition(piece: wrongPawn), false)
+        XCTAssertEqual(board.isCorrectRankPosition(piece: correctPawn), true)
+        
+        let wrongRook = Rook(color: .white, position: .init(rank: .seven, file: .A))
+        let correctRook = Rook(color: .white, position: .init(rank: .eight, file: .A))
+        XCTAssertEqual(board.isCorrectRankPosition(piece: wrongRook), false)
+        XCTAssertEqual(board.isCorrectRankPosition(piece: correctRook), true)
+        
+        let wrongBishop = Bishop(color: .black, position: .init(rank: .eight, file: .C))
+        let correctBishop = Bishop(color: .black, position: .init(rank: .one, file: .C))
+        XCTAssertEqual(board.isCorrectRankPosition(piece: wrongBishop), false)
+        XCTAssertEqual(board.isCorrectRankPosition(piece: correctBishop), true)
+    }
+    
+    func testIsEmptyPosition() {
+        let board = Board()
+
+        let pawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
+        XCTAssertEqual(
+            board.IsEmptyPosition(position: pawn.position),
+            true
+        )
+        board.setPieceOnBoard(position: pawn.position, piece: pawn)
+        
+        XCTAssertEqual(
+            board.IsEmptyPosition(position: pawn.position),
+            false
+        )
+    }
+    
+    func testIsOverMaxCount() {
+        let chessGame = ChessGame()
+        chessGame.initializePieces()
+        
+        let pawn = Pawn(color: .white, position: .init(rank: .seven, file: .A))
+        XCTAssertEqual(
+            chessGame.board.IsOverPieceMaxCount(piece: pawn),
+            true
+        )
+        let bishop = Bishop(color: .white, position: .init(rank: .seven, file: .A))
+        XCTAssertEqual(
+            chessGame.board.IsOverPieceMaxCount(piece: bishop),
+            true
+        )
+        let rook = Rook(color: .white, position: .init(rank: .seven, file: .A))
+        XCTAssertEqual(
+            chessGame.board.IsOverPieceMaxCount(piece: rook),
+            true
+        )
+    }
 }
