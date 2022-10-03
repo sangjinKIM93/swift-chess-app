@@ -91,7 +91,6 @@ extension Board {
     
     func IsOverPieceMaxCount(piece: Piecable) -> Bool {
         let numberOfPiece = theNumberOf(targetPiece: piece)
-        
         return numberOfPiece >= piece.maxCount
     }
     
@@ -100,7 +99,7 @@ extension Board {
         matrix.forEach { ranks in
             ranks.forEach { piece in
                 if piece?.color == targetPiece.color
-                    || piece?.name == targetPiece.name {
+                    && piece?.name == targetPiece.name {
                     num += 1
                 }
             }
@@ -118,7 +117,7 @@ extension Board {
         guard isMyPiece(targetPiece: targetPiece, currentColor: currentColor) else {
             return .failure(.isNotMyPiece)
         }
-        guard !existSameColorPiece(targetPiece: targetPiece, to: to) else {
+        guard !isBlockedByMyPiece(targetPiece: targetPiece, to: to) else {
             return .failure(.existSameColorPiece)
         }
         guard isReachablePosition(targetPiece: targetPiece, to: to) else {
@@ -140,7 +139,7 @@ extension Board {
         return targetPiece.color == currentColor
     }
     
-    func existSameColorPiece(targetPiece: Piecable, to: Piece.Position) -> Bool {
+    func isBlockedByMyPiece(targetPiece: Piecable, to: Piece.Position) -> Bool {
         let toPiece = getPieceOnBoard(position: to)
         
         return targetPiece.color == toPiece?.color
