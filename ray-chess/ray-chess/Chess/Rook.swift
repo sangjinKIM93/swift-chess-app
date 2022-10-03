@@ -12,6 +12,7 @@ class Rook: Piecable {
     var color: Piece.Color
     var name: String
     var maxCount: Int = 2
+    var moveType: Piece.MoveType = .line
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color
@@ -26,22 +27,26 @@ class Rook: Piecable {
         }
     }
     
-    func reachablePositions() -> [Piece.Position] {
-        var positions = [Piece.Position]()
-        
-        File.allCases.forEach { file in
-            if file != position.file {
-                positions.append(Piece.Position(rank: position.rank, file: file))
-            }
-        }
-        Rank.allCases.forEach { rank in
-            if rank != position.rank {
-                positions.append(Piece.Position(rank: rank, file: position.file))
-            }
-        }
-        
-        return positions
+    func reachableDirections() -> [Piece.Direction] {
+        return [.top, .bottom, .left, .right]
     }
+    
+//    func reachablePositions() -> [Piece.Position] {
+//        var positions = [Piece.Position]()
+//
+//        File.allCases.forEach { file in
+//            if file != position.file {
+//                positions.append(Piece.Position(rank: position.rank, file: file))
+//            }
+//        }
+//        Rank.allCases.forEach { rank in
+//            if rank != position.rank {
+//                positions.append(Piece.Position(rank: rank, file: position.file))
+//            }
+//        }
+//
+//        return positions
+//    }
     
     func initializablePositions() -> [Piece.Position] {
         switch color {

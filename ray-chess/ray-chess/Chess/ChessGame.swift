@@ -17,6 +17,30 @@ class ChessGame {
         
     }
     
+    func possibleToMove(position: Piece.Position) -> [Piece.Position] {
+        guard let piece = board.getPieceOnBoard(position: position) else {
+            return []
+        }
+        let reachablePositions = piece.reachablePositions()
+        let possiblePositions = reachablePositions
+            .filter { position in
+                let canMove = board.canMovePiece(
+                    from: piece.position,
+                    to: position,
+                    currentColor: piece.color
+                )
+                
+                switch canMove {
+                case .success(_):
+                    return true
+                case .failure(let error):
+                    return false
+                }
+            }
+        
+        return possiblePositions
+    }
+    
     func initializePieces() {
         initializePawn()
         initializeBishop()
