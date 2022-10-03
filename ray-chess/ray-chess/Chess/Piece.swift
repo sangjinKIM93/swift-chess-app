@@ -12,7 +12,7 @@ protocol Piecable {
     var color: Piece.Color { get set }
     var name: String { get set }
     var maxCount: Int { get set }
-    func reachablePosition() -> [Piece.Position]
+    func reachablePositions() -> [Piece.Position]
     func initializablePositions() -> [Piece.Position]
     func getSymbol() -> String
 }
