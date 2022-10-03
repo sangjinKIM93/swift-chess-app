@@ -14,8 +14,28 @@ class ChessGame {
     let board = Board()
     
     init() {
-        self.initBlackPawn()
-        self.initWhitePawn()
+        
+    }
+    
+    func initializePieces() {
+        initializePawn()
+        initializeBishop()
+        initializeRook()
+    }
+    
+    func initializePawn() {
+        initBlackPawn()
+        initWhitePawn()
+    }
+    
+    func initializeBishop() {
+        initBlackBishop()
+        initWhiteBishop()
+    }
+    
+    func initializeRook() {
+        initBlackRook()
+        initWhiteRook()
     }
     
     func initBlackPawn() {
@@ -44,4 +64,59 @@ class ChessGame {
         }
     }
     
+    func initBlackBishop() {
+        [
+            Bishop(color: .black, position: .init(rank: .one, file: .C)),
+            Bishop(color: .black, position: .init(rank: .one, file: .F))
+        ].forEach { bishop in
+            switch board.canSetPiece(piece: bishop) {
+            case .success(_):
+                board.setPieceOnBoard(position: bishop.position, piece: bishop)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func initWhiteBishop() {
+        [
+            Bishop(color: .white, position: .init(rank: .eight, file: .C)),
+            Bishop(color: .white, position: .init(rank: .eight, file: .F))
+        ].forEach { bishop in
+            switch board.canSetPiece(piece: bishop) {
+            case .success(_):
+                board.setPieceOnBoard(position: bishop.position, piece: bishop)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func initBlackRook() {
+        [
+            Rook(color: .black, position: .init(rank: .one, file: .A)),
+            Rook(color: .black, position: .init(rank: .one, file: .H))
+        ].forEach { rook in
+            switch board.canSetPiece(piece: rook) {
+            case .success(_):
+                board.setPieceOnBoard(position: rook.position, piece: rook)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func initWhiteRook() {
+        [
+            Rook(color: .white, position: .init(rank: .eight, file: .A)),
+            Rook(color: .white, position: .init(rank: .eight, file: .H))
+        ].forEach { rook in
+            switch board.canSetPiece(piece: rook) {
+            case .success(_):
+                board.setPieceOnBoard(position: rook.position, piece: rook)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
