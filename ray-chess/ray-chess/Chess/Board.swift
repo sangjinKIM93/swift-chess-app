@@ -146,7 +146,41 @@ extension Board {
     }
     
     func isReachablePosition(targetPiece: Piecable, to: Piece.Position) -> Bool {
-        return targetPiece.reachablePositions().contains(to)
+        let reachablePositions = self.getReachablePositions(targetPiece: targetPiece)
+        return reachablePositions.contains(to)
+    }
+    
+    func getReachablePositions(targetPiece: Piecable) -> [Piece.Position] {
+        switch targetPiece.moveType {
+        case .line:
+            var directions = targetPiece.reachableDirections().map { $0.getRawValue() }
+            var positions = [Piece.Position]()
+            
+            for step in 1...targetPiece.getMaximumStep() {
+                directions = directions.compactMap { direction in
+                    let directionMutiplied = (file: direction.file * step, rank: direction.rank * step)
+                    
+                    guard let rank = targetPiece.position.rank.getPoint(added: directionMutiplied.rank),
+                          let file = targetPiece.position.file.getPoint(added: directionMutiplied.file) else {
+                        return nil
+                    }
+                        
+                    if isBlockedByMyPiece(targetPiece: targetPiece, to: .init(rank: rank, file: file)) {
+                        return nil
+                    } else {
+                        positions.append(Piece.Position(rank: rank, file: file))
+                        return direction
+                    }
+                }
+            }
+            return positions
+                    
+        case .dot:
+            let positions = targetPiece.reachablePositions().filter { position in
+                return !isBlockedByMyPiece(targetPiece: targetPiece, to: position)
+            }
+            return positions
+        }
     }
 }
 

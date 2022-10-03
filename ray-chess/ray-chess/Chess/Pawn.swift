@@ -12,6 +12,7 @@ class Pawn: Piecable {
     var color: Piece.Color
     var name: String
     var maxCount: Int
+    var moveType: Piece.MoveType = .dot
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color

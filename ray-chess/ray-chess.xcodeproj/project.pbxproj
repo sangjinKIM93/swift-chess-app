@@ -25,8 +25,9 @@
 		48BC37CB28E9C67B0040F287 /* BoardBasicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */; };
 		48BC37CD28E9C9B70040F287 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CC28E9C9B70040F287 /* Bishop.swift */; };
 		48BC37CF28EA6C050040F287 /* BishopTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37CE28EA6C050040F287 /* BishopTest.swift */; };
-		48BC37D128EA71DD0040F287 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37D028EA71DD0040F287 /* Rock.swift */; };
+		48BC37D128EA71DD0040F287 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37D028EA71DD0040F287 /* Rook.swift */; };
 		48BC37D328EA77990040F287 /* RookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37D228EA77990040F287 /* RookTest.swift */; };
+		48BC37D528EAAEB60040F287 /* ChessGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37D428EAAEB60040F287 /* ChessGameTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +70,9 @@
 		48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBasicTest.swift; sourceTree = "<group>"; };
 		48BC37CC28E9C9B70040F287 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		48BC37CE28EA6C050040F287 /* BishopTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTest.swift; sourceTree = "<group>"; };
-		48BC37D028EA71DD0040F287 /* Rock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
+		48BC37D028EA71DD0040F287 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		48BC37D228EA77990040F287 /* RookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookTest.swift; sourceTree = "<group>"; };
+		48BC37D428EAAEB60040F287 /* ChessGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				48BC37CA28E9C67B0040F287 /* BoardBasicTest.swift */,
 				48BC37CE28EA6C050040F287 /* BishopTest.swift */,
 				48BC37D228EA77990040F287 /* RookTest.swift */,
+				48BC37D428EAAEB60040F287 /* ChessGameTest.swift */,
 			);
 			path = "ray-chessTests";
 			sourceTree = "<group>";
@@ -179,7 +182,7 @@
 				48AABCA228DFFA8A0085F577 /* Piece.swift */,
 				48AABC9A28DE99090085F577 /* Board.swift */,
 				48BC37CC28E9C9B70040F287 /* Bishop.swift */,
-				48BC37D028EA71DD0040F287 /* Rock.swift */,
+				48BC37D028EA71DD0040F287 /* Rook.swift */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -315,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BC37D128EA71DD0040F287 /* Rock.swift in Sources */,
+				48BC37D128EA71DD0040F287 /* Rook.swift in Sources */,
 				48AABC6E28DE90B70085F577 /* ViewController.swift in Sources */,
 				48AABC6A28DE90B70085F577 /* AppDelegate.swift in Sources */,
 				48AABCA528E13D360085F577 /* ChessGame.swift in Sources */,
@@ -334,6 +337,7 @@
 			files = (
 				48BC37CF28EA6C050040F287 /* BishopTest.swift in Sources */,
 				48BC37D328EA77990040F287 /* RookTest.swift in Sources */,
+				48BC37D528EAAEB60040F287 /* ChessGameTest.swift in Sources */,
 				48AABCAA28E17A820085F577 /* BoardMovePieceTest.swift in Sources */,
 				48BC37CB28E9C67B0040F287 /* BoardBasicTest.swift in Sources */,
 				48AABC8128DE90BB0085F577 /* BoardSetPieceTest.swift in Sources */,

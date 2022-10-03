@@ -97,4 +97,33 @@ class BoardMovePieceTest: XCTestCase {
         XCTAssertEqual(thirdResult, true)
         
     }
+    
+    func testGetReachablePositions() {
+        let chessGame = ChessGame()
+        chessGame.initializeBishop()
+        
+        let bishop = Bishop(color: .white, position: .init(rank: .eight, file: .C))
+        let result = chessGame.board.getReachablePositions(targetPiece: bishop)
+        let expectedResult = [
+            Piece.Position(rank: .seven, file: .B),
+            Piece.Position(rank: .seven, file: .D),
+            Piece.Position(rank: .six, file: .A),
+            Piece.Position(rank: .six, file: .E),
+            Piece.Position(rank: .five, file: .F),
+            Piece.Position(rank: .four, file: .G),
+            Piece.Position(rank: .three, file: .H),
+        ]
+        XCTAssertEqual(result, expectedResult)
+        
+        chessGame.initializePawn()
+        let result2 = chessGame.board.getReachablePositions(targetPiece: bishop)
+        let expectedResult2 = [Piece.Position]()
+        XCTAssertEqual(result2, expectedResult2)
+        
+        chessGame.initializeRook()
+        let rook = Rook(color: .white, position: .init(rank: .eight, file: .A))
+        let result3 = chessGame.board.getReachablePositions(targetPiece: rook)
+        let expectedResult3 = [Piece.Position(rank: .eight, file: .B)]
+        XCTAssertEqual(result3, expectedResult3)
+    }
 }

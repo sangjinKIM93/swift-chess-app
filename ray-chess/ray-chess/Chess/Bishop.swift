@@ -12,6 +12,7 @@ class Bishop: Piecable {
     var color: Piece.Color
     var name: String
     var maxCount: Int = 2
+    var moveType: Piece.MoveType = .line
 
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color
@@ -25,36 +26,40 @@ class Bishop: Piecable {
             self.name = "U+2657"
         }
     }
-
-    func reachablePositions() -> [Piece.Position] {
-        let maximumReach = max(
-            (File.H.rawValue) - position.file.rawValue,
-            (Rank.eight.rawValue) - position.rank.rawValue,
-            position.file.rawValue,
-            position.rank.rawValue
-        )
-        
-        var positions = [Piece.Position]()
-        for step in 1...maximumReach {
-            positions.append(contentsOf: getReachableDiagonalPostions(step: step))
-        }
-        return positions
-    }
     
-    func getReachableDiagonalPostions(step: Int) -> [Piece.Position] {
-        var positions = [Piece.Position]()
-        
-        for i in [-1 * step, 1 * step] {
-            for j in [-1 * step, +1 * step] {
-                if let rank = position.rank.getPoint(added: i),
-                   let file = position.file.getPoint(added: j) {
-                    positions.append(Piece.Position(rank: rank, file: file))
-                }
-            }
-        }
-        
-        return positions
+    func reachableDirections() -> [Piece.Direction] {
+        return [.topRight, .rightBottom, .bottomLeft, .leftTop]
     }
+
+//    func reachablePositions() -> [Piece.Position] {
+//        let maximumReach = max(
+//            (File.H.rawValue) - position.file.rawValue,
+//            (Rank.eight.rawValue) - position.rank.rawValue,
+//            position.file.rawValue,
+//            position.rank.rawValue
+//        )
+//        
+//        var positions = [Piece.Position]()
+//        for step in 1...maximumReach {
+//            positions.append(contentsOf: getReachableDiagonalPostions(step: step))
+//        }
+//        return positions
+//    }
+//    
+//    func getReachableDiagonalPostions(step: Int) -> [Piece.Position] {
+//        var positions = [Piece.Position]()
+//        
+//        for i in [-1 * step, 1 * step] {
+//            for j in [-1 * step, +1 * step] {
+//                if let rank = position.rank.getPoint(added: i),
+//                   let file = position.file.getPoint(added: j) {
+//                    positions.append(Piece.Position(rank: rank, file: file))
+//                }
+//            }
+//        }
+//        
+//        return positions
+//    }
 
     func initializablePositions() -> [Piece.Position] {
         switch color {
