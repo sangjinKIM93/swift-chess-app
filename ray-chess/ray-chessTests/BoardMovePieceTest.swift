@@ -14,72 +14,87 @@ class BoardMovePieceTest: XCTestCase {
 
     override func tearDownWithError() throws {}
 
-    func testExample() throws {
-        checkCanMovePawn()
-    }
-
-    func checkCanMovePawn() {
-        checkIsMyPiece()
-        checkExistSameColorPiece()
-        isOneStepFoward()
+    func testCanMovePawn() {
+        let chessGame = ChessGame()
+        chessGame.initializePieces()
+        
+        let firstFrom = Piece.Position(rank: .two, file: .B)
+        let firstTo = Piece.Position(rank: .three, file: .B)
+        let firstMove = chessGame.board.canMovePiece(
+            from: firstFrom,
+            to: firstTo,
+            currentColor: .black
+        )
+        XCTAssertEqual(firstMove, .success(true))
+        chessGame.board.movePawn(from: firstFrom, to: firstTo)
+        
+        let secondFrom = Piece.Position(rank: .one, file: .C)
+        let secondTo = Piece.Position(rank: .two, file: .B)
+        let secondMove = chessGame.board.canMovePiece(
+            from: secondFrom,
+            to: secondTo,
+            currentColor: .black
+        )
+        XCTAssertEqual(secondMove, .success(true))
+        chessGame.board.movePawn(from: secondFrom, to: secondTo)
     }
     
-    func checkIsMyPiece() {
+    func testTargetPieceIsEmpty() {
         let chessGame = ChessGame()
+        chessGame.initializePieces()
         
-        let firstResult = chessGame.board.canMovePiece(
+        let failure = chessGame.board.canMovePiece(
+            from: Piece.Position(rank: .four, file: .B),
+            to: Piece.Position(rank: .three, file: .B),
+            currentColor: .black
+        )
+        XCTAssertEqual(failure, .failure(.isEmptySpace))
+        
+        let success = chessGame.board.canMovePiece(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .black
         )
-        XCTAssertEqual(firstResult, .success(true))
-        
-        let secondResult = chessGame.board.canMovePiece(
-            from: Piece.Position(rank: .two, file: .B),
-            to: Piece.Position(rank: .three, file: .B),
-            currentColor: .white
-        )
-        XCTAssertEqual(secondResult, .failure(.isNotMyPiece))
+        XCTAssertEqual(success, .success(true))
     }
     
-    func checkExistSameColorPiece() {
+    func testIsMyPiece() {
         let chessGame = ChessGame()
+        chessGame.initializePieces()
         
-        let firstResult = chessGame.board.canMovePiece(
-            from: Piece.Position(rank: .two, file: .B),
-            to: Piece.Position(rank: .three, file: .B),
-            currentColor: .black
-        )
-        XCTAssertEqual(firstResult, .success(true))
-        
-        chessGame.board.movePawn(
-            from: Piece.Position(rank: .two, file: .B),
-            to: Piece.Position(rank: .six, file: .B)
-        )
-        
-        let secondResult = chessGame.board.canMovePiece(
-            from: Piece.Position(rank: .six, file: .B),
-            to: Piece.Position(rank: .seven, file: .B),
-            currentColor: .black
-        )
-        XCTAssertEqual(secondResult, .success(true))
+        let rook = Rook(color: .white, position: .init(rank: .eight, file: .A))
+        let failure = chessGame.board.isMyPiece(targetPiece: rook, currentColor: .black)
+        let success = chessGame.board.isMyPiece(targetPiece: rook, currentColor: .white)
+        XCTAssertEqual(failure, false)
+        XCTAssertEqual(success, true)
     }
     
-    func isOneStepFoward() {
+    func testExistSameColorPiece() {
+        let chessGame = ChessGame()
+        chessGame.initializePieces()
+        
+        let bishop = Bishop(color: .black, position: .init(rank: .one, file: .C))
+        let success = chessGame.board.isBlockedByMyPiece(targetPiece: bishop, to: .init(rank: .two, file: .B))
+        XCTAssertEqual(success, true)
+        
+        let failure = chessGame.board.isBlockedByMyPiece(targetPiece: bishop, to: .init(rank: .three, file: .A))
+        XCTAssertEqual(failure, false)
+    }
+    
+    func testIsReachablePositions() {
         let chessGame = ChessGame()
         
-        let firstResult = chessGame.board.canMovePiece(
-            from: Piece.Position(rank: .two, file: .B),
-            to: Piece.Position(rank: .three, file: .B),
-            currentColor: .black
-        )
-        XCTAssertEqual(firstResult, .success(true))
+        let pawn = Pawn(color: .white, position: .init(rank: .seven, file: .A))
+        let firstResult = chessGame.board.isReachablePosition(targetPiece: pawn, to: .init(rank: .six, file: .A))
+        XCTAssertEqual(firstResult, true)
         
-        let secondResult = chessGame.board.canMovePiece(
-            from: Piece.Position(rank: .two, file: .B),
-            to: Piece.Position(rank: .one, file: .B),
-            currentColor: .black
-        )
-        XCTAssertEqual(secondResult, .failure(.isNotReachable))
+        let bishop = Bishop(color: .white, position: .init(rank: .eight, file: .C))
+        let secondResult = chessGame.board.isReachablePosition(targetPiece: bishop, to: .init(rank: .six, file: .A))
+        XCTAssertEqual(secondResult, true)
+        
+        let rook = Rook(color: .white, position: .init(rank: .eight, file: .H))
+        let thirdResult = chessGame.board.isReachablePosition(targetPiece: rook, to: .init(rank: .four, file: .H))
+        XCTAssertEqual(thirdResult, true)
+        
     }
 }
