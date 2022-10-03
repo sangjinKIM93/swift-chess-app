@@ -27,14 +27,14 @@ class BoardMovePawnTest: XCTestCase {
     func checkIsMyPiece() {
         let chessGame = ChessGame()
         
-        let firstResult = chessGame.board.canMovePawn(
+        let firstResult = chessGame.board.canMovePiece(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .black
         )
         XCTAssertEqual(firstResult, .success(true))
         
-        let secondResult = chessGame.board.canMovePawn(
+        let secondResult = chessGame.board.canMovePiece(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .white
@@ -45,7 +45,7 @@ class BoardMovePawnTest: XCTestCase {
     func checkExistSameColorPiece() {
         let chessGame = ChessGame()
         
-        let firstResult = chessGame.board.canMovePawn(
+        let firstResult = chessGame.board.canMovePiece(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .black
@@ -57,7 +57,7 @@ class BoardMovePawnTest: XCTestCase {
             to: Piece.Position(rank: .six, file: .B)
         )
         
-        let secondResult = chessGame.board.canMovePawn(
+        let secondResult = chessGame.board.canMovePiece(
             from: Piece.Position(rank: .six, file: .B),
             to: Piece.Position(rank: .seven, file: .B),
             currentColor: .black
@@ -68,14 +68,14 @@ class BoardMovePawnTest: XCTestCase {
     func isOneStepFoward() {
         let chessGame = ChessGame()
         
-        let firstResult = chessGame.board.canMovePawn(
+        let firstResult = chessGame.board.canMovePiece(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .three, file: .B),
             currentColor: .black
         )
         XCTAssertEqual(firstResult, .success(true))
         
-        let secondResult = chessGame.board.canMovePawn(
+        let secondResult = chessGame.board.canMovePiece(
             from: Piece.Position(rank: .two, file: .B),
             to: Piece.Position(rank: .one, file: .B),
             currentColor: .black

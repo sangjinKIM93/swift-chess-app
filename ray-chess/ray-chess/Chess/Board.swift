@@ -65,14 +65,14 @@ class Board {
 
 // MARK: - Pawn initialize
 extension Board {
-    func canSetPawn(pawn: Pawn) -> Result<Bool, Board.SetError> {
-        guard isCorrectRankPosition(piece: pawn) else {
+    func canSetPiece(piece: Piecable) -> Result<Bool, Board.SetError> {
+        guard isCorrectRankPosition(piece: piece) else {
             return .failure(.wrongInitRank)
         }
-        guard IsEmptyPosition(position: pawn.position) else {
+        guard IsEmptyPosition(position: piece.position) else {
             return .failure(.isFulledPosition)
         }
-        guard !IsOverPieceMaxCount(piece: pawn) else {
+        guard !IsOverPieceMaxCount(piece: piece) else {
             return .failure(.isOverMaxCount)
         }
         
@@ -111,7 +111,7 @@ extension Board {
 
 // MARK: - Pawn move
 extension Board {
-    func canMovePawn(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Result<Bool, Board.MoveError> {
+    func canMovePiece(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Result<Bool, Board.MoveError> {
         guard let targetPiece = getPieceOnBoard(position: from) else {
             return .failure(.isEmptySpace)
         }
