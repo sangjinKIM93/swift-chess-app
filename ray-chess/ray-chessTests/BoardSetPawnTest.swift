@@ -56,13 +56,13 @@ class BoardSetPawnTest: XCTestCase {
         
         let invalidRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: .four, file: .A))
         XCTAssertEqual(
-            board.canSetPawn(pawn: invalidRankPostionPawn),
+            board.canSetPiece(piece: invalidRankPostionPawn),
             .failure(.wrongInitRank)
         )
         
         let validRankPostionPawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
         XCTAssertEqual(
-            board.canSetPawn(pawn: validRankPostionPawn),
+            board.canSetPiece(piece: validRankPostionPawn),
             .success(true)
         )
     }
@@ -72,7 +72,7 @@ class BoardSetPawnTest: XCTestCase {
         
         let dummyPawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
         XCTAssertEqual(
-            board.canSetPawn(pawn: dummyPawn),
+            board.canSetPiece(piece: dummyPawn),
             .success(true)
         )
         
@@ -81,7 +81,7 @@ class BoardSetPawnTest: XCTestCase {
         let noEmptySpacePawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
         
         XCTAssertEqual(
-            board.canSetPawn(pawn: noEmptySpacePawn),
+            board.canSetPiece(piece: noEmptySpacePawn),
             .failure(.isFulledPosition)
         )
     }
