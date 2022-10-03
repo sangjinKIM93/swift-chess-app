@@ -56,4 +56,19 @@ class ChessGameTest: XCTestCase {
         XCTAssertEqual(successResults, true)
         XCTAssertEqual(failureResults, true)
     }
+    
+    func testPossibleToMoveKnight() {
+        let chessGame = ChessGame()
+        chessGame.initializeKnight()
+        
+        let result = chessGame.possibleToMove(position: .init(rank: .one, file: .B))
+            .sorted { ($0.rank.rawValue, $0.file.rawValue) > ($1.rank.rawValue, $1.file.rawValue) }
+        let expectedResult = [
+            Piece.Position(rank: .three, file: .C),
+            Piece.Position(rank: .two, file: .D),
+            Piece.Position(rank: .three, file: .A),
+        ].sorted { ($0.rank.rawValue, $0.file.rawValue) > ($1.rank.rawValue, $1.file.rawValue) }
+        
+        XCTAssertEqual(result, expectedResult)
+    }
 }

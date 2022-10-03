@@ -30,6 +30,8 @@ class ChessGame {
         initializePawn()
         initializeBishop()
         initializeRook()
+        initializeQueen()
+        initializeKnight()
     }
     
     func initializePawn() {
@@ -51,6 +53,22 @@ class ChessGame {
         [
             Queen(color: .white, position: .init(rank: .eight, file: .E)),
             Queen(color: .black, position: .init(rank: .one, file: .E))
+        ].forEach { rook in
+            switch board.canSetPiece(piece: rook) {
+            case .success(_):
+                board.setPieceOnBoard(position: rook.position, piece: rook)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func initializeKnight() {
+        [
+            Knight(color: .white, position: .init(rank: .eight, file: .B)),
+            Knight(color: .white, position: .init(rank: .eight, file: .G)),
+            Knight(color: .black, position: .init(rank: .one, file: .B)),
+            Knight(color: .black, position: .init(rank: .one, file: .G)),
         ].forEach { rook in
             switch board.canSetPiece(piece: rook) {
             case .success(_):
