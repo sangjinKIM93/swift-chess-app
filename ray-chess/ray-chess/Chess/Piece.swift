@@ -44,6 +44,15 @@ enum Piece {
     struct Position: Equatable {
         var rank: Rank
         var file: File
+        
+        func getPosition(rankAdded: Int, fileAdded: Int) -> Piece.Position? {
+            guard let rank = self.rank.getPoint(added: rankAdded),
+                  let file = self.file.getPoint(added: fileAdded) else {
+                return nil
+            }
+            
+            return Piece.Position(rank: rank, file: file)
+        }
     }
     
     enum Color {
