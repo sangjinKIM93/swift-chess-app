@@ -215,7 +215,9 @@ extension Board {
     
     @discardableResult
     func setPieceOnBoard(position: Piece.Position, piece: Piecable?) -> Bool {
-        matrix[position.rank.rawValue][position.file.rawValue] = piece
+        var newPiece = piece
+        newPiece?.position = position
+        matrix[position.rank.rawValue][position.file.rawValue] = newPiece
         return true
     }
 }
