@@ -9,10 +9,10 @@ import Foundation
 
 protocol Piecable {
     var position: Piece.Position { get set }
-    var color: Piece.Color { get set }
-    var name: String { get set }
-    var maxCount: Int { get set }
-    var moveType: Piece.MoveType { get set }
+    var color: Piece.Color { get }
+    var name: String { get }
+    var maxCount: Int { get }
+    var moveType: Piece.MoveType { get }
     
     func reachableDirections() -> [Piece.Direction]
     func reachablePositions() -> [Piece.Position]

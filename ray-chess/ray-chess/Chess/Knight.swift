@@ -9,10 +9,10 @@ import Foundation
 
 class Knight: Piecable {
     var position: Piece.Position
-    var color: Piece.Color
-    var name: String
-    var maxCount: Int = 2
-    var moveType: Piece.MoveType = .dot
+    let color: Piece.Color
+    let name: String
+    let maxCount: Int = 2
+    let moveType: Piece.MoveType = .dot
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color
