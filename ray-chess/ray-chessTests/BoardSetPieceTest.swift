@@ -14,21 +14,10 @@ class BoardSetPieceTest: XCTestCase {
 
     override func tearDownWithError() throws {}
 
-    func testCanSetPawn() {
+    func testBoard_Pawn_A2_초기화_실패_isFulledPosition() {
         let board = Board()
         
-        let pawn = Pawn(color: .black, position: .init(rank: .four, file: .A))
-        XCTAssertEqual(
-            board.canSetPiece(piece: pawn),
-            .failure(.wrongInitRank)
-        )
-        
-        let rook = Rook(color: .black, position: .init(rank: .two, file: .A))
-        XCTAssertEqual(
-            board.canSetPiece(piece: rook),
-            .failure(.wrongInitRank)
-        )
-        
+        let pawn = Pawn(color: .black, position: .init(rank: .two, file: .A))
         board.setPieceOnBoard(position: pawn.position, piece: pawn)
         
         let noEmptySpacePawn = Pawn(color: .black, position: .init(rank: .two, file: .A))
