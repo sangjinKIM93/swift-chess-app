@@ -11,43 +11,16 @@ import Foundation
 // - 말 셋팅 관리
 // - 말 움직임 관리
 class Board {
-    private(set) var matrix: [[Piecable?]]
+    private(set) var matrix = BoardMatrix()
     
-    init() {
-        let rank = Array<Piecable?>(repeating: nil, count: 8)
-        self.matrix = Array(repeating: rank, count: 8)
-    }
+    init() { }
     
     func getScore() -> (black: Int, white: Int) {
-        var blackScore = 0
-        var whiteScore = 0
-
-        matrix.forEach { rank in
-            rank.forEach { piece in
-                if let piece = piece {
-                    switch piece.color {
-                    case .white:
-                        whiteScore += piece.point
-                    case .black:
-                        blackScore += piece.point
-                    }
-                }
-            }
-        }
-        
-        return (blackScore, whiteScore)
+        return matrix.getScore()
     }
     
     func display() -> [[String]] {
-        matrix.map { rank -> [String] in
-            let formattedRank = rank.map { piece -> String in
-                guard let piece = piece else {
-                    return "."
-                }
-                return piece.getSymbol()
-            }
-            return formattedRank
-        }
+        return matrix.display()
     }
     
     enum SetError: Error {
@@ -97,16 +70,7 @@ extension Board {
     }
     
     func theNumberOf(targetPiece: Piecable) -> Int {
-        var num: Int = 0
-        matrix.forEach { ranks in
-            ranks.forEach { piece in
-                if piece?.color == targetPiece.color
-                    && piece?.name == targetPiece.name {
-                    num += 1
-                }
-            }
-        }
-        return num
+        return matrix.theNumberOf(targetPiece: targetPiece)
     }
 }
 
@@ -212,14 +176,14 @@ extension Board {
 // MARK: - Matrix Common
 extension Board {
     func getPieceOnBoard(position: Position) -> Piecable? {
-        return matrix[position.rank.rawValue][position.file.rawValue]
+        return matrix.getPieceOnMatrix(position: position)
     }
     
     @discardableResult
     func setPieceOnBoard(position: Position, piece: Piecable?) -> Bool {
         var newPiece = piece
         newPiece?.position = position
-        matrix[position.rank.rawValue][position.file.rawValue] = newPiece
+        matrix.setPieceOnBoard(position: position, piece: newPiece)
         return true
     }
 }
