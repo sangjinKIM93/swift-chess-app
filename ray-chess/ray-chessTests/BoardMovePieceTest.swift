@@ -18,8 +18,8 @@ class BoardMovePieceTest: XCTestCase {
         let chessGame = ChessGame()
         chessGame.initializePieces()
         
-        let firstFrom = Piece.Position(rank: .two, file: .B)
-        let firstTo = Piece.Position(rank: .three, file: .B)
+        let firstFrom = Position(rank: .two, file: .B)
+        let firstTo = Position(rank: .three, file: .B)
         let firstMove = chessGame.board.canMovePiece(
             from: firstFrom,
             to: firstTo,
@@ -28,8 +28,8 @@ class BoardMovePieceTest: XCTestCase {
         XCTAssertEqual(firstMove, .success(true))
         chessGame.board.movePawn(from: firstFrom, to: firstTo)
         
-        let secondFrom = Piece.Position(rank: .one, file: .C)
-        let secondTo = Piece.Position(rank: .two, file: .B)
+        let secondFrom = Position(rank: .one, file: .C)
+        let secondTo = Position(rank: .two, file: .B)
         let secondMove = chessGame.board.canMovePiece(
             from: secondFrom,
             to: secondTo,
@@ -44,15 +44,15 @@ class BoardMovePieceTest: XCTestCase {
         chessGame.initializePieces()
         
         let failure = chessGame.board.canMovePiece(
-            from: Piece.Position(rank: .four, file: .B),
-            to: Piece.Position(rank: .three, file: .B),
+            from: Position(rank: .four, file: .B),
+            to: Position(rank: .three, file: .B),
             currentColor: .black
         )
         XCTAssertEqual(failure, .failure(.isEmptySpace))
         
         let success = chessGame.board.canMovePiece(
-            from: Piece.Position(rank: .two, file: .B),
-            to: Piece.Position(rank: .three, file: .B),
+            from: Position(rank: .two, file: .B),
+            to: Position(rank: .three, file: .B),
             currentColor: .black
         )
         XCTAssertEqual(success, .success(true))
@@ -105,25 +105,25 @@ class BoardMovePieceTest: XCTestCase {
         let bishop = Bishop(color: .white, position: .init(rank: .eight, file: .C))
         let result = chessGame.board.getReachablePositions(targetPiece: bishop)
         let expectedResult = [
-            Piece.Position(rank: .seven, file: .B),
-            Piece.Position(rank: .seven, file: .D),
-            Piece.Position(rank: .six, file: .A),
-            Piece.Position(rank: .six, file: .E),
-            Piece.Position(rank: .five, file: .F),
-            Piece.Position(rank: .four, file: .G),
-            Piece.Position(rank: .three, file: .H),
+            Position(rank: .seven, file: .B),
+            Position(rank: .seven, file: .D),
+            Position(rank: .six, file: .A),
+            Position(rank: .six, file: .E),
+            Position(rank: .five, file: .F),
+            Position(rank: .four, file: .G),
+            Position(rank: .three, file: .H),
         ]
         XCTAssertEqual(result, expectedResult)
         
         chessGame.initializePawn()
         let result2 = chessGame.board.getReachablePositions(targetPiece: bishop)
-        let expectedResult2 = [Piece.Position]()
+        let expectedResult2 = [Position]()
         XCTAssertEqual(result2, expectedResult2)
         
         chessGame.initializeRook()
         let rook = Rook(color: .white, position: .init(rank: .eight, file: .A))
         let result3 = chessGame.board.getReachablePositions(targetPiece: rook)
-        let expectedResult3 = [Piece.Position(rank: .eight, file: .B)]
+        let expectedResult3 = [Position(rank: .eight, file: .B)]
         XCTAssertEqual(result3, expectedResult3)
     }
 }

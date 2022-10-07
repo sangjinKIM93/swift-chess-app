@@ -8,14 +8,14 @@
 import Foundation
 
 class Bishop: Piecable {
-    var position: Piece.Position
+    var position: Position
     let color: Piece.Color
     let name: String
     let maxCount: Int = 2
     let moveType: Piece.MoveType = .line
     let point: Int = 3
 
-    init(color: Piece.Color, position: Piece.Position) {
+    init(color: Piece.Color, position: Position) {
         self.color = color
         self.position = position
 
@@ -61,12 +61,12 @@ class Bishop: Piecable {
 //        return positions
 //    }
 
-    func initializablePositions() -> [Piece.Position] {
+    func initializablePositions() -> [Position] {
         switch color {
         case .black:
-            return [Piece.Position(rank: .one, file: .C), Piece.Position(rank: .one, file: .F)]
+            return [Position(rank: .one, file: .C), Position(rank: .one, file: .F)]
         case .white:
-            return [Piece.Position(rank: .eight, file: .C), Piece.Position(rank: .eight, file: .F)]
+            return [Position(rank: .eight, file: .C), Position(rank: .eight, file: .F)]
         }
     }
 

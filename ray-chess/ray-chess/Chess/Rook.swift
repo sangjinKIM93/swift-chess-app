@@ -8,14 +8,14 @@
 import Foundation
 
 class Rook: Piecable {
-    var position: Piece.Position
+    var position: Position
     let color: Piece.Color
     let name: String
     let maxCount: Int = 2
     let moveType: Piece.MoveType = .line
     let point: Int = 5
     
-    init(color: Piece.Color, position: Piece.Position) {
+    init(color: Piece.Color, position: Position) {
         self.color = color
         self.position = position
 
@@ -48,12 +48,12 @@ class Rook: Piecable {
 //        return positions
 //    }
     
-    func initializablePositions() -> [Piece.Position] {
+    func initializablePositions() -> [Position] {
         switch color {
         case .black:
-            return [Piece.Position(rank: .one, file: .A), Piece.Position(rank: .one, file: .H)]
+            return [Position(rank: .one, file: .A), Position(rank: .one, file: .H)]
         case .white:
-            return [Piece.Position(rank: .eight, file: .A), Piece.Position(rank: .eight, file: .H)]
+            return [Position(rank: .eight, file: .A), Position(rank: .eight, file: .H)]
         }
     }
     

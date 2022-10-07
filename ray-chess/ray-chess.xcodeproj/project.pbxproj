@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		488CCB7428EFF041005CF1E3 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488CCB7328EFF041005CF1E3 /* Position.swift */; };
 		48AABC6A28DE90B70085F577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC6928DE90B70085F577 /* AppDelegate.swift */; };
 		48AABC6C28DE90B70085F577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC6B28DE90B70085F577 /* SceneDelegate.swift */; };
 		48AABC6E28DE90B70085F577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AABC6D28DE90B70085F577 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		488CCB7328EFF041005CF1E3 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		48AABC6628DE90B70085F577 /* ray-chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ray-chess.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48AABC6928DE90B70085F577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48AABC6B28DE90B70085F577 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				48BC37D028EA71DD0040F287 /* Rook.swift */,
 				48BA3A3A28EB170F006BCA3D /* Queen.swift */,
 				48BA3A3C28EB1A52006BCA3D /* Knight.swift */,
+				488CCB7328EFF041005CF1E3 /* Position.swift */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				48BA3A3D28EB1A52006BCA3D /* Knight.swift in Sources */,
 				48AABCA528E13D360085F577 /* ChessGame.swift in Sources */,
 				48AABC9B28DE99090085F577 /* Board.swift in Sources */,
+				488CCB7428EFF041005CF1E3 /* Position.swift in Sources */,
 				48AABCA328DFFA8A0085F577 /* Piece.swift in Sources */,
 				48BC37CD28E9C9B70040F287 /* Bishop.swift in Sources */,
 				48AABCA828E16A3D0085F577 /* Array+ext.swift in Sources */,

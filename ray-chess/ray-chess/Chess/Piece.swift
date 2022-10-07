@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Piecable {
-    var position: Piece.Position { get set }
+    var position: Position { get set }
     var color: Piece.Color { get }
     var name: String { get }
     var maxCount: Int { get }
@@ -16,8 +16,8 @@ protocol Piecable {
     var point: Int { get }
     
     func reachableDirections() -> [Piece.Direction]
-    func reachablePositions() -> [Piece.Position]
-    func initializablePositions() -> [Piece.Position]
+    func reachablePositions() -> [Position]
+    func initializablePositions() -> [Position]
     func getSymbol() -> String
     func getMaximumStep() -> Int
 }
@@ -26,13 +26,13 @@ extension Piecable {
     func reachableDirections() -> [Piece.Direction] {
         return []
     }
-    func reachablePositions() -> [Piece.Position] {
+    func reachablePositions() -> [Position] {
         return []
     }
     func getMaximumStep() -> Int {
         let maximumStep = max(
-            (File.H.rawValue) - self.position.file.rawValue,
-            (Rank.eight.rawValue) - self.position.rank.rawValue,
+            (Position.File.H.rawValue) - self.position.file.rawValue,
+            (Position.Rank.eight.rawValue) - self.position.rank.rawValue,
             self.position.file.rawValue,
             self.position.rank.rawValue
         )
@@ -42,20 +42,6 @@ extension Piecable {
 }
 
 enum Piece {
-    struct Position: Equatable {
-        var rank: Rank
-        var file: File
-        
-        func getPosition(rankAdded: Int, fileAdded: Int) -> Piece.Position? {
-            guard let rank = self.rank.getPoint(added: rankAdded),
-                  let file = self.file.getPoint(added: fileAdded) else {
-                return nil
-            }
-            
-            return Piece.Position(rank: rank, file: file)
-        }
-    }
-    
     enum Color {
         case white
         case black
@@ -99,20 +85,4 @@ enum Piece {
     }
 }
 
-enum File: Int, CaseIterable {
-    case A = 0, B, C, D, E, F, G, H
-    
-    func getPoint(added: Int) -> File? {
-        let file = self.rawValue + added
-        return File(rawValue: file)
-    }
-}
 
-enum Rank: Int, CaseIterable {
-    case one = 0, two, three, four, five, six, seven, eight
-    
-    func getPoint(added: Int) -> Rank? {
-        let rank = self.rawValue + added
-        return Rank(rawValue: rank)
-    }
-}

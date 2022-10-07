@@ -17,7 +17,7 @@ class ChessGame {
         
     }
     
-    func possibleToMove(position: Piece.Position) -> [Piece.Position] {
+    func possibleToMove(position: Position) -> [Position] {
         guard let piece = board.getPieceOnBoard(position: position) else {
             return []
         }
@@ -80,8 +80,8 @@ class ChessGame {
     }
     
     func initBlackPawn() {
-        File.allCases.forEach { file in
-            let pawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: file))
+        Position.File.allCases.forEach { file in
+            let pawn = Pawn(color: .black, position: Position(rank: .two, file: file))
             
             switch board.canSetPiece(piece: pawn) {
             case .success(_):
@@ -93,8 +93,8 @@ class ChessGame {
     }
     
     func initWhitePawn() {
-        File.allCases.forEach { file in
-            let pawn = Pawn(color: .white, position: Piece.Position(rank: .seven, file: file))
+        Position.File.allCases.forEach { file in
+            let pawn = Pawn(color: .white, position: Position(rank: .seven, file: file))
             
             switch board.canSetPiece(piece: pawn) {
             case .success(_):
