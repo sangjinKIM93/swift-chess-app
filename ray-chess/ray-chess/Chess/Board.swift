@@ -153,34 +153,56 @@ extension Board {
     func getReachablePositions(targetPiece: Piecable) -> [Piece.Position] {
         switch targetPiece.moveType {
         case .line:
-            var directions = targetPiece.reachableDirections().map { $0.getRawValue() }
-            var positions = [Piece.Position]()
-            
-            for step in 1...targetPiece.getMaximumStep() {
-                directions = directions.compactMap { direction in
-                    let directionMutiplied = (file: direction.file * step, rank: direction.rank * step)
-                    
-                    guard let rank = targetPiece.position.rank.getPoint(added: directionMutiplied.rank),
-                          let file = targetPiece.position.file.getPoint(added: directionMutiplied.file) else {
-                        return nil
-                    }
-                        
-                    if isBlockedByMyPiece(targetPiece: targetPiece, to: .init(rank: rank, file: file)) {
-                        return nil
-                    } else {
-                        positions.append(Piece.Position(rank: rank, file: file))
-                        return direction
-                    }
-                }
-            }
-            return positions
-                    
+            return self.lineMoveReachablePositions(targetPiece: targetPiece)
         case .dot:
-            let positions = targetPiece.reachablePositions().filter { position in
-                return !isBlockedByMyPiece(targetPiece: targetPiece, to: position)
-            }
-            return positions
+            return self.dotMoveReachablePositions(targetPiece: targetPiece)
         }
+    }
+    
+    func lineMoveReachablePositions(targetPiece: Piecable) -> [Piece.Position] {
+        var directions = targetPiece.reachableDirections().map { $0.getRawValue() }
+        var positions = [Piece.Position]()
+        
+        for step in 1...targetPiece.getMaximumStep() {
+            directions = movableDirections(targetPiece: targetPiece, step: step, directions: directions)
+            
+            directions
+                .compactMap { direction in
+                    let directionMutiplied = (file: direction.file * step, rank: direction.rank * step)
+                    return targetPiece.position.getPosition(rankAdded: directionMutiplied.rank, fileAdded: directionMutiplied.file)
+                }
+                .forEach { position in
+                    positions.append(position)
+                }
+        }
+        return positions
+    }
+
+    func movableDirections(
+        targetPiece: Piecable,
+        step: Int,
+        directions: [(file: Int, rank: Int)]
+    ) -> [(file: Int, rank: Int)] {
+        return directions.compactMap { direction in
+            let directionMutiplied = (file: direction.file * step, rank: direction.rank * step)
+            
+            guard let toPosition = targetPiece.position.getPosition(rankAdded: directionMutiplied.rank, fileAdded: directionMutiplied.file) else {
+                return nil
+            }
+            
+            if isBlockedByMyPiece(targetPiece: targetPiece, to: toPosition) {
+                return nil
+            } else {
+                return direction
+            }
+        }
+    }
+    
+    func dotMoveReachablePositions(targetPiece: Piecable) -> [Piece.Position] {
+        let positions = targetPiece.reachablePositions().filter { position in
+            return !isBlockedByMyPiece(targetPiece: targetPiece, to: position)
+        }
+        return positions
     }
 }
 
