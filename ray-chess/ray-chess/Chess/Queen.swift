@@ -8,14 +8,14 @@
 import Foundation
 
 class Queen: Piecable {
-    var position: Piece.Position
+    var position: Position
     let color: Piece.Color
     let name: String
     let maxCount: Int = 1
     let moveType: Piece.MoveType = .line
     let point: Int = 9
     
-    init(color: Piece.Color, position: Piece.Position) {
+    init(color: Piece.Color, position: Position) {
         self.color = color
         self.position = position
         
@@ -27,12 +27,12 @@ class Queen: Piecable {
         }
     }
     
-    func initializablePositions() -> [Piece.Position] {
+    func initializablePositions() -> [Position] {
         switch color {
         case .black:
-            return [Piece.Position(rank: .one, file: .E)]
+            return [Position(rank: .one, file: .E)]
         case .white:
-            return [Piece.Position(rank: .eight, file: .E)]
+            return [Position(rank: .eight, file: .E)]
         }
     }
     

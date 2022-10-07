@@ -85,7 +85,7 @@ extension Board {
         return piece.initializablePositions().contains(piece.position)
     }
     
-    func IsEmptyPosition(position: Piece.Position) -> Bool {
+    func IsEmptyPosition(position: Position) -> Bool {
         let piece = getPieceOnBoard(position: position)
         
         return piece == nil
@@ -112,7 +112,7 @@ extension Board {
 
 // MARK: - Pawn move
 extension Board {
-    func canMovePiece(from: Piece.Position, to: Piece.Position, currentColor: Piece.Color) -> Result<Bool, Board.MoveError> {
+    func canMovePiece(from: Position, to: Position, currentColor: Piece.Color) -> Result<Bool, Board.MoveError> {
         guard let targetPiece = getPieceOnBoard(position: from) else {
             return .failure(.isEmptySpace)
         }
@@ -129,7 +129,7 @@ extension Board {
         return .success(true)
     }
     
-    func movePawn(from: Piece.Position, to: Piece.Position) {
+    func movePawn(from: Position, to: Position) {
         var pawn = getPieceOnBoard(position: from)
         pawn?.position = to
         setPieceOnBoard(position: to, piece: pawn)
@@ -141,18 +141,18 @@ extension Board {
         return targetPiece.color == currentColor
     }
     
-    func isBlockedByMyPiece(targetPiece: Piecable, to: Piece.Position) -> Bool {
+    func isBlockedByMyPiece(targetPiece: Piecable, to: Position) -> Bool {
         let toPiece = getPieceOnBoard(position: to)
         
         return targetPiece.color == toPiece?.color
     }
     
-    func isReachablePosition(targetPiece: Piecable, to: Piece.Position) -> Bool {
+    func isReachablePosition(targetPiece: Piecable, to: Position) -> Bool {
         let reachablePositions = self.getReachablePositions(targetPiece: targetPiece)
         return reachablePositions.contains(to)
     }
     
-    func getReachablePositions(targetPiece: Piecable) -> [Piece.Position] {
+    func getReachablePositions(targetPiece: Piecable) -> [Position] {
         switch targetPiece.moveType {
         case .line:
             return self.lineMoveReachablePositions(targetPiece: targetPiece)
@@ -161,9 +161,9 @@ extension Board {
         }
     }
     
-    func lineMoveReachablePositions(targetPiece: Piecable) -> [Piece.Position] {
+    func lineMoveReachablePositions(targetPiece: Piecable) -> [Position] {
         var directions = targetPiece.reachableDirections().map { $0.getRawValue() }
-        var positions = [Piece.Position]()
+        var positions = [Position]()
         
         for step in 1...targetPiece.getMaximumStep() {
             directions = movableDirections(targetPiece: targetPiece, step: step, directions: directions)
@@ -200,7 +200,7 @@ extension Board {
         }
     }
     
-    func dotMoveReachablePositions(targetPiece: Piecable) -> [Piece.Position] {
+    func dotMoveReachablePositions(targetPiece: Piecable) -> [Position] {
         let positions = targetPiece.reachablePositions().filter { position in
             return !isBlockedByMyPiece(targetPiece: targetPiece, to: position)
         }
@@ -211,12 +211,12 @@ extension Board {
 
 // MARK: - Matrix Common
 extension Board {
-    func getPieceOnBoard(position: Piece.Position) -> Piecable? {
+    func getPieceOnBoard(position: Position) -> Piecable? {
         return matrix[position.rank.rawValue][position.file.rawValue]
     }
     
     @discardableResult
-    func setPieceOnBoard(position: Piece.Position, piece: Piecable?) -> Bool {
+    func setPieceOnBoard(position: Position, piece: Piecable?) -> Bool {
         var newPiece = piece
         newPiece?.position = position
         matrix[position.rank.rawValue][position.file.rawValue] = newPiece

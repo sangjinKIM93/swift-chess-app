@@ -19,7 +19,7 @@ class BoardBasicTest: XCTestCase {
         chessGame.initializePawn()
         chessGame.initializeRook()
         let score = chessGame.board.getScore()
-        XCTAssertEqual(score.white, 13)
-        XCTAssertEqual(score.black, 13)
+        XCTAssertEqual(score.white, 18)
+        XCTAssertEqual(score.black, 18)
     }
 }

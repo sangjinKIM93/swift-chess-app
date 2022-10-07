@@ -8,14 +8,14 @@
 import Foundation
 
 class Pawn: Piecable {
-    var position: Piece.Position
+    var position: Position
     let color: Piece.Color
     let name: String
     let maxCount: Int
     let moveType: Piece.MoveType = .dot
     let point: Int = 1
     
-    init(color: Piece.Color, position: Piece.Position) {
+    init(color: Piece.Color, position: Position) {
         self.color = color
         self.position = position
         self.maxCount = 8
@@ -28,32 +28,32 @@ class Pawn: Piecable {
         }
     }
     
-    func reachablePositions() -> [Piece.Position] {
+    func reachablePositions() -> [Position] {
         switch color {
         case .white:
             guard let newRank = self.position.rank.getPoint(added: -1) else {
                 return []
             }
-            return [Piece.Position(rank: newRank, file: self.position.file)]
+            return [Position(rank: newRank, file: self.position.file)]
         case .black:
             guard let newRank = self.position.rank.getPoint(added: 1) else {
                 return []
             }
-            return [Piece.Position(rank: newRank, file: self.position.file)]
+            return [Position(rank: newRank, file: self.position.file)]
         }
     }
     
-    func initializablePositions() -> [Piece.Position] {
-        var positions = [Piece.Position]()
+    func initializablePositions() -> [Position] {
+        var positions = [Position]()
         
         switch color {
         case .white:
-            File.allCases.forEach { file in
-                positions.append(Piece.Position(rank: .seven, file: file))
+            Position.File.allCases.forEach { file in
+                positions.append(Position(rank: .seven, file: file))
             }
         case .black:
-            File.allCases.forEach { file in
-                positions.append(Piece.Position(rank: .two, file: file))
+            Position.File.allCases.forEach { file in
+                positions.append(Position(rank: .two, file: file))
             }
         }
         return positions

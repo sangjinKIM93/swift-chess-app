@@ -50,7 +50,7 @@ class BoardSetPieceTest: XCTestCase {
     func testIsEmptyPosition() {
         let board = Board()
 
-        let pawn = Pawn(color: .black, position: Piece.Position(rank: .two, file: .A))
+        let pawn = Pawn(color: .black, position: Position(rank: .two, file: .A))
         XCTAssertEqual(
             board.IsEmptyPosition(position: pawn.position),
             true

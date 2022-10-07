@@ -19,19 +19,19 @@ class ChessGameTest: XCTestCase {
         
         chessGame.initializePawn()
         let result = chessGame.possibleToMove(position: .init(rank: .seven, file: .A))
-        let expectedResult = [Piece.Position(rank: .six, file: .A)]
+        let expectedResult = [Position(rank: .six, file: .A)]
         XCTAssertEqual(result, expectedResult)
         
         chessGame.initializeRook()
         let result2 = chessGame.possibleToMove(position: .init(rank: .eight, file: .A))
             .sorted { ($0.rank.rawValue, $0.file.rawValue) > ($1.rank.rawValue, $1.file.rawValue) }
         let expectedResult2 = [
-            Piece.Position(rank: .eight, file: .B),
-            Piece.Position(rank: .eight, file: .C),
-            Piece.Position(rank: .eight, file: .D),
-            Piece.Position(rank: .eight, file: .E),
-            Piece.Position(rank: .eight, file: .F),
-            Piece.Position(rank: .eight, file: .G),
+            Position(rank: .eight, file: .B),
+            Position(rank: .eight, file: .C),
+            Position(rank: .eight, file: .D),
+            Position(rank: .eight, file: .E),
+            Position(rank: .eight, file: .F),
+            Position(rank: .eight, file: .G),
         ].sorted { ($0.rank.rawValue, $0.file.rawValue) > ($1.rank.rawValue, $1.file.rawValue) }
         XCTAssertEqual(result2, expectedResult2)
     }
@@ -64,9 +64,9 @@ class ChessGameTest: XCTestCase {
         let result = chessGame.possibleToMove(position: .init(rank: .one, file: .B))
             .sorted { ($0.rank.rawValue, $0.file.rawValue) > ($1.rank.rawValue, $1.file.rawValue) }
         let expectedResult = [
-            Piece.Position(rank: .three, file: .C),
-            Piece.Position(rank: .two, file: .D),
-            Piece.Position(rank: .three, file: .A),
+            Position(rank: .three, file: .C),
+            Position(rank: .two, file: .D),
+            Position(rank: .three, file: .A),
         ].sorted { ($0.rank.rawValue, $0.file.rawValue) > ($1.rank.rawValue, $1.file.rawValue) }
         
         XCTAssertEqual(result, expectedResult)
