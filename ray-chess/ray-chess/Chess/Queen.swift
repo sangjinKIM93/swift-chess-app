@@ -13,6 +13,7 @@ class Queen: Piecable {
     let name: String
     let maxCount: Int = 1
     let moveType: Piece.MoveType = .line
+    let point: Int = 9
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color
