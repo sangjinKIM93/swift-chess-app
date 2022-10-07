@@ -13,6 +13,7 @@ class Knight: Piecable {
     let name: String
     let maxCount: Int = 2
     let moveType: Piece.MoveType = .dot
+    let point: Int = 3
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color

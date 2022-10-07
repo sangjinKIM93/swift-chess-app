@@ -13,6 +13,7 @@ class Pawn: Piecable {
     let name: String
     let maxCount: Int
     let moveType: Piece.MoveType = .dot
+    let point: Int = 1
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color

@@ -13,6 +13,7 @@ class Rook: Piecable {
     let name: String
     let maxCount: Int = 2
     let moveType: Piece.MoveType = .line
+    let point: Int = 5
     
     init(color: Piece.Color, position: Piece.Position) {
         self.color = color

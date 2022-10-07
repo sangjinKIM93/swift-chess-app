@@ -14,14 +14,12 @@ class BoardBasicTest: XCTestCase {
 
     override func tearDownWithError() throws {}
 
-    func testExample() throws {
-        testGetScore()
-    }
-    
-    func testGetScore() {
+    func testBoard_Score_Pawn_and_Rook_초기화상태_점수() {
         let chessGame = ChessGame()
+        chessGame.initializePawn()
+        chessGame.initializeRook()
         let score = chessGame.board.getScore()
-        XCTAssertEqual(score.white, 8)
-        XCTAssertEqual(score.black, 8)
+        XCTAssertEqual(score.white, 13)
+        XCTAssertEqual(score.black, 13)
     }
 }

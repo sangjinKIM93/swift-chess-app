@@ -24,11 +24,13 @@ class Board {
 
         matrix.forEach { rank in
             rank.forEach { piece in
-                if piece?.color == .white {
-                    whiteScore += 1
-                }
-                if piece?.color == .black {
-                    blackScore += 1
+                if let piece = piece {
+                    switch piece.color {
+                    case .white:
+                        whiteScore += piece.point
+                    case .black:
+                        blackScore += piece.point
+                    }
                 }
             }
         }

@@ -13,6 +13,7 @@ protocol Piecable {
     var name: String { get }
     var maxCount: Int { get }
     var moveType: Piece.MoveType { get }
+    var point: Int { get }
     
     func reachableDirections() -> [Piece.Direction]
     func reachablePositions() -> [Piece.Position]
