@@ -32,6 +32,8 @@
 		48BC37D128EA71DD0040F287 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37D028EA71DD0040F287 /* Rook.swift */; };
 		48BC37D328EA77990040F287 /* RookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37D228EA77990040F287 /* RookTest.swift */; };
 		48BC37D528EAAEB60040F287 /* ChessGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC37D428EAAEB60040F287 /* ChessGameTest.swift */; };
+		48D5F7D128F0FF6B00C72D58 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5F7D028F0FF6B00C72D58 /* BoardView.swift */; };
+		48D5F7D428F1254F00C72D58 /* PieceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5F7D328F1254F00C72D58 /* PieceButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		48BC37D028EA71DD0040F287 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		48BC37D228EA77990040F287 /* RookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookTest.swift; sourceTree = "<group>"; };
 		48BC37D428EAAEB60040F287 /* ChessGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameTest.swift; sourceTree = "<group>"; };
+		48D5F7D028F0FF6B00C72D58 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		48D5F7D328F1254F00C72D58 /* PieceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +135,12 @@
 		48AABC6828DE90B70085F577 /* ray-chess */ = {
 			isa = PBXGroup;
 			children = (
+				48D5F7D228F1252900C72D58 /* View */,
 				48AABCAC28E190650085F577 /* Chess */,
 				48AABCAB28E1904B0085F577 /* Resource */,
 				48AABCA628E16A350085F577 /* Extension */,
 				48AABC6928DE90B70085F577 /* AppDelegate.swift */,
 				48AABC6B28DE90B70085F577 /* SceneDelegate.swift */,
-				48AABC6D28DE90B70085F577 /* ViewController.swift */,
 				48AABC7728DE90BB0085F577 /* Info.plist */,
 			);
 			path = "ray-chess";
@@ -197,6 +201,16 @@
 				488CCB7528F0E97B005CF1E3 /* BoardMatrix.swift */,
 			);
 			path = Chess;
+			sourceTree = "<group>";
+		};
+		48D5F7D228F1252900C72D58 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				48AABC6D28DE90B70085F577 /* ViewController.swift */,
+				48D5F7D028F0FF6B00C72D58 /* BoardView.swift */,
+				48D5F7D328F1254F00C72D58 /* PieceButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,7 +356,9 @@
 				488CCB7628F0E97B005CF1E3 /* BoardMatrix.swift in Sources */,
 				48BC37CD28E9C9B70040F287 /* Bishop.swift in Sources */,
 				48AABCA828E16A3D0085F577 /* Array+ext.swift in Sources */,
+				48D5F7D128F0FF6B00C72D58 /* BoardView.swift in Sources */,
 				48AABC9D28DE9B280085F577 /* Pawn.swift in Sources */,
+				48D5F7D428F1254F00C72D58 /* PieceButton.swift in Sources */,
 				48AABC6C28DE90B70085F577 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

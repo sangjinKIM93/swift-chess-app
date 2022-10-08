@@ -7,14 +7,78 @@
 
 import Foundation
 
+protocol ChessGameDelegate {
+    func targetPieceSelected(piece: Piecable)
+    func targetPieceSelectedAgain()
+    func pieceMoved(matrix: BoardMatrix, score: (black: Int, white: Int), turn: Piece.Color)
+    func enemyPieceSelected()
+}
+
 // - 체스판 초기화
-// - 입/출력 관리
+// - 출력 전 프로세싱
 class ChessGame {
+
+    enum SelectionType {
+        case from
+        case to(from: Position)
+    }
     
     let board = Board()
+    var turn: Piece.Color
+    var selectionType = SelectionType.from
+    
+    var delegate: ChessGameDelegate?
     
     init() {
+        self.turn = .white
+        initializePieces()
         
+    }
+    
+    func processSelection(position: Position) {
+        switch selectionType {
+        case .from:
+            processFirstSelection(position: position)
+        case .to(let from):
+            processSecondSelection(from: from, to: position)
+        }
+    }
+    
+    func processFirstSelection(position: Position) {
+        guard let piece = board.getPieceOnBoard(position: position) else {
+            return
+        }
+        guard isMyTurn(color: piece.color) else {
+            delegate?.targetPieceSelectedAgain()
+            return
+        }
+        delegate?.targetPieceSelected(piece: piece)
+        self.selectionType = .to(from: position)
+    }
+    
+    func processSecondSelection(from: Position, to: Position) {
+        if to == from {
+            delegate?.enemyPieceSelected()
+            self.selectionType = .from
+            return
+        }
+        
+        if board.canMovePiece(from: from, to: to, currentColor: self.turn) == .success(true) {
+            board.movePawn(from: from, to: to)
+            
+            self.selectionType = .from
+            self.turn = turn.getNext()
+            
+            delegate?.pieceMoved(
+                matrix: board.matrix,
+                score: board.getScore(),
+                turn: turn
+            )
+        }
+    }
+    
+    func isMyTurn(color: Piece.Color) -> Bool {
+        return self.turn == color
     }
     
     func possibleToMove(position: Position) -> [Position] {
@@ -25,7 +89,10 @@ class ChessGame {
         
         return possiblePositions
     }
-    
+}
+
+// MARK: - initialiaze
+extension ChessGame {
     func initializePieces() {
         initializePawn()
         initializeBishop()
