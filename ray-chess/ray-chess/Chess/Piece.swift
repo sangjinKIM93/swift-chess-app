@@ -45,6 +45,15 @@ enum Piece {
     enum Color {
         case white
         case black
+        
+        func getNext() -> Piece.Color {
+            switch self {
+            case .white:
+                return .black
+            case .black:
+                return .white
+            }
+        }
     }
     
     enum MoveType {

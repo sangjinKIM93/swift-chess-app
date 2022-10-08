@@ -43,7 +43,7 @@ class Queen: Piecable {
     func getSymbol() -> String {
         switch color {
         case .white:
-            return "♖"
+            return "♕"
         case .black:
             return "♛"
         }
