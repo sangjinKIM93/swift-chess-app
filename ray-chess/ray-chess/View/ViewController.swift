@@ -70,11 +70,12 @@ extension ViewController: ChessGameDelegate {
     }
     
     // boardView 전체 최신화가 아닌 변경 부분만 최신화 하도록 수정
-    func pieceMoved(matrix: BoardMatrix, score: (black: Int, white: Int), turn: Piece.Color) {
+    func targetPieceMoved(matrix: BoardMatrix) {
         boardView.updateBoard(boardMatrix: matrix)
         boardView.clearChangedColor()
-        
-        updateTurnLabel(turn: turn)
+    }
+    
+    func enemyPieceTaken(score: (black: Int, white: Int)) {
         updateScoreLabel(white: score.white, black: score.black)
     }
     
@@ -84,6 +85,10 @@ extension ViewController: ChessGameDelegate {
     
     func enemyPieceSelected() {
         // TODO: 햅틱 추가 (분리해서)
+    }
+    
+    func turnChanged(turn: Piece.Color) {
+        updateTurnLabel(turn: turn)
     }
     
     private func showTargetPiece(piece: Piecable) {

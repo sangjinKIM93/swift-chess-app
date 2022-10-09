@@ -10,8 +10,10 @@ import Foundation
 protocol ChessGameDelegate {
     func targetPieceSelected(piece: Piecable)
     func targetPieceSelectedAgain()
-    func pieceMoved(matrix: BoardMatrix, score: (black: Int, white: Int), turn: Piece.Color)
+    func targetPieceMoved(matrix: BoardMatrix)
+    func enemyPieceTaken(score: (black: Int, white: Int))
     func enemyPieceSelected()
+    func turnChanged(turn: Piece.Color)
 }
 
 // - 체스판 초기화
@@ -64,21 +66,33 @@ class ChessGame {
         }
         
         if board.canMovePiece(from: from, to: to, currentColor: self.turn) == .success(true) {
+            let isEnemyPieceTaken = isEnemyPiece(position: to)
+            
             board.movePawn(from: from, to: to)
+            delegate?.targetPieceMoved(matrix: board.matrix)
+            if isEnemyPieceTaken {
+                delegate?.enemyPieceTaken(score: board.getScore())
+            }
             
-            self.selectionType = .from
-            self.turn = turn.getNext()
-            
-            delegate?.pieceMoved(
-                matrix: board.matrix,
-                score: board.getScore(),
-                turn: turn
-            )
+            turnOver()
         }
     }
     
     func isMyTurn(color: Piece.Color) -> Bool {
         return self.turn == color
+    }
+    
+    func isEnemyPiece(position: Position) -> Bool {
+        guard let toPiece = board.getPieceOnBoard(position: position) else {
+            return false
+        }
+        return toPiece.color != turn
+    }
+    
+    func turnOver() {
+        self.selectionType = .from
+        self.turn = turn.getNext()
+        delegate?.turnChanged(turn: self.turn)
     }
     
     func possibleToMove(position: Position) -> [Position] {
