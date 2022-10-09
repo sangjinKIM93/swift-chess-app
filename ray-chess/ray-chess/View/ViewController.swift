@@ -84,7 +84,8 @@ extension ViewController: ChessGameDelegate {
     }
     
     func enemyPieceSelected() {
-        // TODO: 햅틱 추가 (분리해서)
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
     }
     
     func turnChanged(turn: Piece.Color) {

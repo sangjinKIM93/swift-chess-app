@@ -51,7 +51,7 @@ class ChessGame {
             return
         }
         guard isMyTurn(color: piece.color) else {
-            delegate?.targetPieceSelectedAgain()
+            delegate?.enemyPieceSelected()
             return
         }
         delegate?.targetPieceSelected(piece: piece)
@@ -60,7 +60,7 @@ class ChessGame {
     
     func processSecondSelection(from: Position, to: Position) {
         if to == from {
-            delegate?.enemyPieceSelected()
+            delegate?.targetPieceSelectedAgain()
             self.selectionType = .from
             return
         }
