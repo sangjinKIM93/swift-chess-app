@@ -7,27 +7,19 @@
 
 import Foundation
 
-class Knight: Piecable {
-    var position: Position
-    let color: Piece.Color
-    let name: String
-    let maxCount: Int = 2
-    let moveType: Piece.MoveType = .dot
-    let point: Int = 3
-    
+class Knight: Piece {
     init(color: Piece.Color, position: Position) {
-        self.color = color
-        self.position = position
-        
-        switch color {
-        case .white:
-            self.name = "U+2658"
-        case .black:
-            self.name = "U+265E"
-        }
+        super.init(
+            position: position,
+            color: color,
+            name: color == .black ? "U+265E" : "U+2658",
+            point: 3,
+            maxCount: 2,
+            moveType: .dot
+        )
     }
     
-    func initializablePositions() -> [Position] {
+    override func initializablePositions() -> [Position] {
         switch color {
         case .black:
             return [Position(rank: .one, file: .B), Position(rank: .one, file: .G)]
@@ -36,7 +28,7 @@ class Knight: Piecable {
         }
     }
     
-    func reachablePositions() -> [Position] {
+    override func reachablePositions() -> [Position] {
         var positions = [Position]()
         [(2,-1), (2,1), (-2,-1), (-2,1), (1,-2), (-1,-2), (1,2), (-1,2)]
             .forEach { (file: Int, rank: Int) in
@@ -48,7 +40,7 @@ class Knight: Piecable {
         return positions
     }
     
-    func getSymbol() -> String {
+    override func getSymbol() -> String {
         switch color {
         case .white:
             return "♘"

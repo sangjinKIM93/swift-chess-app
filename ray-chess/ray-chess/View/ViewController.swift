@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         
         setupView()
         
+        chessGame.initializePieces()
         boardView.updateBoard(boardMatrix: chessGame.board.matrix)
     }
     
@@ -64,7 +65,7 @@ extension ViewController: BoardViewDelegate {
 
 // MARK: - Output
 extension ViewController: ChessGameDelegate {
-    func targetPieceSelected(piece: Piecable) {
+    func targetPieceSelected(piece: Piece) {
         showTargetPiece(piece: piece)
         showReachablePostions(piece: piece)
     }
@@ -92,11 +93,11 @@ extension ViewController: ChessGameDelegate {
         updateTurnLabel(turn: turn)
     }
     
-    private func showTargetPiece(piece: Piecable) {
+    private func showTargetPiece(piece: Piece) {
         boardView.setSelectedColor(position: piece.position)
     }
     
-    private func showReachablePostions(piece: Piecable) {
+    private func showReachablePostions(piece: Piece) {
         let reachablePositions = chessGame.board.getReachablePositions(targetPiece: piece)
         reachablePositions.forEach { reachablePosition in
             boardView.setReachableColor(position: reachablePosition)

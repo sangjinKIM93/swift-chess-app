@@ -7,48 +7,23 @@
 
 import Foundation
 
-class Rook: Piecable {
-    var position: Position
-    let color: Piece.Color
-    let name: String
-    let maxCount: Int = 2
-    let moveType: Piece.MoveType = .line
-    let point: Int = 5
-    
+class Rook: Piece {
     init(color: Piece.Color, position: Position) {
-        self.color = color
-        self.position = position
-
-        switch color {
-        case .white:
-            self.name = "U+2656"
-        case .black:
-            self.name = "U+265C"
-        }
+        super.init(
+            position: position,
+            color: color,
+            name: color == .black ? "U+265C" : "U+2656",
+            point: 5,
+            maxCount: 2,
+            moveType: .line
+        )
     }
-    
-    func reachableDirections() -> [Piece.Direction] {
+
+    override func reachableDirections() -> [Piece.Direction] {
         return [.top, .bottom, .left, .right]
     }
     
-//    func reachablePositions() -> [Piece.Position] {
-//        var positions = [Piece.Position]()
-//
-//        File.allCases.forEach { file in
-//            if file != position.file {
-//                positions.append(Piece.Position(rank: position.rank, file: file))
-//            }
-//        }
-//        Rank.allCases.forEach { rank in
-//            if rank != position.rank {
-//                positions.append(Piece.Position(rank: rank, file: position.file))
-//            }
-//        }
-//
-//        return positions
-//    }
-    
-    func initializablePositions() -> [Position] {
+    override func initializablePositions() -> [Position] {
         switch color {
         case .black:
             return [Position(rank: .one, file: .A), Position(rank: .one, file: .H)]
@@ -57,7 +32,7 @@ class Rook: Piecable {
         }
     }
     
-    func getSymbol() -> String {
+    override func getSymbol() -> String {
         switch color {
         case .white:
             return "♖"

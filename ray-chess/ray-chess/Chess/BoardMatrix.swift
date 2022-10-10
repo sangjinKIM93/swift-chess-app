@@ -8,18 +8,18 @@
 import Foundation
 
 class BoardMatrix {
-    private(set) var matrix: [[Piecable?]]
+    private(set) var matrix: [[Piece?]]
     
     init() {
-        let rank = Array<Piecable?>(repeating: nil, count: 8)
+        let rank = Array<Piece?>(repeating: nil, count: 8)
         self.matrix = Array(repeating: rank, count: 8)
     }
     
-    func getPieceOnMatrix(position: Position) -> Piecable? {
+    func getPieceOnMatrix(position: Position) -> Piece? {
         return matrix[position.rank.rawValue][position.file.rawValue]
     }
     
-    func setPieceOnBoard(position: Position, piece: Piecable?) {
+    func setPieceOnBoard(position: Position, piece: Piece?) {
         matrix[position.rank.rawValue][position.file.rawValue] = piece
     }
     
@@ -55,7 +55,7 @@ class BoardMatrix {
         }
     }
     
-    func theNumberOf(targetPiece: Piecable) -> Int {
+    func theNumberOf(targetPiece: Piece) -> Int {
         var num: Int = 0
         matrix.forEach { ranks in
             ranks.forEach { piece in
