@@ -111,6 +111,7 @@ extension ChessGame {
         initializeRook()
         initializeQueen()
         initializeKnight()
+        initializeKing()
     }
     
     func initializePawn() {
@@ -128,14 +129,28 @@ extension ChessGame {
         initWhiteRook()
     }
     
-    func initializeQueen() {
+    func initializeKing() {
         [
-            Queen(color: .white, position: .init(rank: .eight, file: .E)),
-            Queen(color: .black, position: .init(rank: .one, file: .E))
+            King(color: .white, position: .init(rank: .eight, file: .D)),
+            King(color: .black, position: .init(rank: .one, file: .D))
         ].forEach { rook in
             switch board.canSetPiece(piece: rook) {
             case .success(_):
                 board.setPieceOnBoard(position: rook.position, piece: rook)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func initializeQueen() {
+        [
+            Queen(color: .white, position: .init(rank: .eight, file: .E)),
+            Queen(color: .black, position: .init(rank: .one, file: .E))
+        ].forEach { king in
+            switch board.canSetPiece(piece: king) {
+            case .success(_):
+                board.setPieceOnBoard(position: king.position, piece: king)
             case .failure(let error):
                 print(error)
             }
@@ -148,10 +163,10 @@ extension ChessGame {
             Knight(color: .white, position: .init(rank: .eight, file: .G)),
             Knight(color: .black, position: .init(rank: .one, file: .B)),
             Knight(color: .black, position: .init(rank: .one, file: .G)),
-        ].forEach { rook in
-            switch board.canSetPiece(piece: rook) {
+        ].forEach { queen in
+            switch board.canSetPiece(piece: queen) {
             case .success(_):
-                board.setPieceOnBoard(position: rook.position, piece: rook)
+                board.setPieceOnBoard(position: queen.position, piece: queen)
             case .failure(let error):
                 print(error)
             }
