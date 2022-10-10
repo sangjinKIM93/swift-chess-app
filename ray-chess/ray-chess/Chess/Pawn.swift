@@ -7,28 +7,19 @@
 
 import Foundation
 
-class Pawn: Piecable {
-    var position: Position
-    let color: Piece.Color
-    let name: String
-    let maxCount: Int
-    let moveType: Piece.MoveType = .dot
-    let point: Int = 1
-    
+class Pawn: Piece {
     init(color: Piece.Color, position: Position) {
-        self.color = color
-        self.position = position
-        self.maxCount = 8
-        
-        switch color {
-        case .white:
-            self.name = "U+2659"
-        case .black:
-            self.name = "U+265F"
-        }
+        super.init(
+            position: position,
+            color: color,
+            name: color == .black ? "U+265F" : "U+2659",
+            point: 1,
+            maxCount: 8,
+            moveType: .dot
+        )
     }
     
-    func reachablePositions() -> [Position] {
+    override func reachablePositions() -> [Position] {
         switch color {
         case .white:
             guard let newRank = self.position.rank.getPoint(added: -1) else {
@@ -43,7 +34,7 @@ class Pawn: Piecable {
         }
     }
     
-    func initializablePositions() -> [Position] {
+    override func initializablePositions() -> [Position] {
         var positions = [Position]()
         
         switch color {
@@ -59,7 +50,7 @@ class Pawn: Piecable {
         return positions
     }
     
-    func getSymbol() -> String {
+    override func getSymbol() -> String {
         switch color {
         case .white:
             return "♙"

@@ -7,27 +7,19 @@
 
 import Foundation
 
-class Queen: Piecable {
-    var position: Position
-    let color: Piece.Color
-    let name: String
-    let maxCount: Int = 1
-    let moveType: Piece.MoveType = .line
-    let point: Int = 9
-    
+class Queen: Piece {
     init(color: Piece.Color, position: Position) {
-        self.color = color
-        self.position = position
-        
-        switch color {
-        case .white:
-            self.name = "U+2655"
-        case .black:
-            self.name = "U+265B"
-        }
+        super.init(
+            position: position,
+            color: color,
+            name: color == .black ? "U+265B" : "U+2655",
+            point: 9,
+            maxCount: 1,
+            moveType: .line
+        )
     }
     
-    func initializablePositions() -> [Position] {
+    override func initializablePositions() -> [Position] {
         switch color {
         case .black:
             return [Position(rank: .one, file: .E)]
@@ -36,11 +28,11 @@ class Queen: Piecable {
         }
     }
     
-    func reachableDirections() -> [Piece.Direction] {
+    override func reachableDirections() -> [Piece.Direction] {
         return Piece.Direction.allCases
     }
     
-    func getSymbol() -> String {
+    override func getSymbol() -> String {
         switch color {
         case .white:
             return "♕"

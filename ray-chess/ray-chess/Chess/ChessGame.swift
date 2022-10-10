@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ChessGameDelegate {
-    func targetPieceSelected(piece: Piecable)
+    func targetPieceSelected(piece: Piece)
     func targetPieceSelectedAgain()
     func targetPieceMoved(matrix: BoardMatrix)
     func enemyPieceTaken(score: (black: Int, white: Int))
@@ -33,8 +33,6 @@ class ChessGame {
     
     init() {
         self.turn = .white
-        initializePieces()
-        
     }
     
     func processSelection(position: Position) {
