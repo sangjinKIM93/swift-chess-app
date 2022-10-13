@@ -98,7 +98,7 @@ extension ViewController: ChessGameDelegate {
     }
     
     private func showReachablePostions(piece: Piece) {
-        let reachablePositions = chessGame.board.getReachablePositions(targetPiece: piece)
+        let reachablePositions = chessGame.possibleToMove(position: piece.position)
         reachablePositions.forEach { reachablePosition in
             boardView.setReachableColor(position: reachablePosition)
         }
