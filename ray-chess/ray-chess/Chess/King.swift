@@ -13,7 +13,7 @@ class King: Piece {
             position: position,
             color: color,
             name: color == .black ? "U+265A" : "U+2654",
-            point: 3,
+            point: 4,
             maxCount: 2,
             moveType: .dot
         )
