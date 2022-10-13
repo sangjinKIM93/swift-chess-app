@@ -9,7 +9,6 @@ import UIKit
 
 class PieceButton: UIButton {
     let position: Position
-    var piece: Piece?
     
     init(position: Position) {
         self.position = position
@@ -29,13 +28,7 @@ class PieceButton: UIButton {
         self.layer.borderColor = UIColor.gray.cgColor
     }
     
-    func updatePieceData(piece: Piece?) {
-        self.piece = piece
-        if let piece = piece {
-            self.setTitle(piece.getSymbol(), for: .normal)
-        } else {
-            self.setTitle("", for: .normal)
-        }
-        
+    func updateTitle(piece: String?) {
+        self.setTitle(piece, for: .normal)
     }
 }

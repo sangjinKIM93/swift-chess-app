@@ -68,11 +68,10 @@ class BoardView: UIView {
     }
     
     func updateBoard(boardMatrix: BoardMatrix) {
-        // index 체크
         for (rankRawValue, pieceButtons) in matrixView.enumerated() {
             for (fileRawValue, pieceButton) in pieceButtons.enumerated() {
                 let piece = boardMatrix.matrix[rankRawValue][fileRawValue]
-                pieceButton.updatePieceData(piece: piece)
+                pieceButton.updateTitle(piece: piece?.getSymbol())
             }
         }
     }
@@ -83,7 +82,6 @@ class BoardView: UIView {
     
     @objc func didTapPieceButton(_ sender: PieceButton) {
         delegate?.selected(position: sender.position)
-
     }
     
     func setSelectedColor(position: Position) {
